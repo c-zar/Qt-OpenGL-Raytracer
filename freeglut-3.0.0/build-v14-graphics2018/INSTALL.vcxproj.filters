@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\2e7f4b25f870bffbbef2cf694c20eb98\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{654378B8-9E79-335C-B640-C99525AC13FA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

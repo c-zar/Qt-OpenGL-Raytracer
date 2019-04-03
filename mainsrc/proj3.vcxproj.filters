@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="VertexObj.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="utilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="stglew.h" />
+    <ClInclude Include="VertexObj.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="utilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="kernels\phong.frag" />
+    <None Include="Shaders\environment.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\environment.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\reflection.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\reflection.frag">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{776594d0-da3f-49e9-9f3f-90e14f672270}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

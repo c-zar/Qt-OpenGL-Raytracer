@@ -1,0 +1,2 @@
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v141:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=10.0.16299.0
+Debug Library|Win32|I:\courses\cap4730_Fall2018\projects\proj2_raytracer\_proj2_raytracer_solution_2018_\src\mainsrc\|

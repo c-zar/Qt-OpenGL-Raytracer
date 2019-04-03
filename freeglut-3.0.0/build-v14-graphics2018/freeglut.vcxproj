@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1BC8C020-48D3-3349-9B2F-C88D4A2B8DCF}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>freeglut</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\bin\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freeglut.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">freeglutd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\bin\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freeglut.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">freeglut</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\bin\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freeglut.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">freeglut</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\bin\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freeglut.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">freeglut</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR="Debug";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR=\"Debug\";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/lib/Debug/freeglutd.lib</ImportLibrary>
+      <ModuleDefinitionFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/freeglutdll.def</ModuleDefinitionFile>
+      <ProgramDataBaseFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/bin/Debug/freeglutd.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR="Release";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR=\"Release\";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/lib/Release/freeglut.lib</ImportLibrary>
+      <ModuleDefinitionFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/freeglutdll.def</ModuleDefinitionFile>
+      <ProgramDataBaseFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/bin/Release/freeglut.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR="MinSizeRel";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR=\"MinSizeRel\";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/lib/MinSizeRel/freeglut.lib</ImportLibrary>
+      <ModuleDefinitionFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/freeglutdll.def</ModuleDefinitionFile>
+      <ProgramDataBaseFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/bin/MinSizeRel/freeglut.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsC</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR="RelWithDebInfo";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;FREEGLUT_EXPORTS;_CRT_SECURE_NO_WARNINGS;_WIN32_WINNT=0x0500;WINVER=0x0500;HAVE_CONFIG_H;CMAKE_INTDIR=\"RelWithDebInfo\";freeglut_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/lib/RelWithDebInfo/freeglut.lib</ImportLibrary>
+      <ModuleDefinitionFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/freeglutdll.def</ModuleDefinitionFile>
+      <ProgramDataBaseFile>I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/bin/RelWithDebInfo/freeglut.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+C:\cmake-3.12.1-win64-x64\bin\cmake.exe "-HI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0" "-BI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build" --check-stamp-file "I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCXXInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckFunctionExists.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFileCXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFiles.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckTypeSize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindOpenGL.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCXXCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeRCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeSystem.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\config.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.pc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.rc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_version.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\freeglutdll.def.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+C:\cmake-3.12.1-win64-x64\bin\cmake.exe "-HI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0" "-BI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build" --check-stamp-file "I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCXXInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckFunctionExists.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFileCXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFiles.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckTypeSize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindOpenGL.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCXXCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeRCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeSystem.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\config.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.pc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.rc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_version.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\freeglutdll.def.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+C:\cmake-3.12.1-win64-x64\bin\cmake.exe "-HI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0" "-BI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build" --check-stamp-file "I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCXXInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckFunctionExists.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFileCXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFiles.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckTypeSize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindOpenGL.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCXXCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeRCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeSystem.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\config.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.pc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.rc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_version.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\freeglutdll.def.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+C:\cmake-3.12.1-win64-x64\bin\cmake.exe "-HI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0" "-BI:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build" --check-stamp-file "I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:/courses/cap4730_Fall2018/projects/proj1_mesh/_gradingsolution_ codeupgrade_2018_/proj1_mesh_grading/src/freeglut-3.0.0/CMakeLists.txt;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCXXInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeCommonLanguageInclude.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeGenericSystem.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeInitializeConfigs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeLanguageInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeRCInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInformation.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CMakeSystemSpecificInitialize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckFunctionExists.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFile.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFileCXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckIncludeFiles.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\CheckTypeSize.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Compiler\MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindOpenGL.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageHandleStandardArgs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\FindPackageMessage.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\GNUInstallDirs.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-C.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC-CXX.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows-MSVC.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\Windows.cmake;C:\cmake-3.12.1-win64-x64\share\cmake-3.12\Modules\Platform\WindowsPaths.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeCXXCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeRCCompiler.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\3.12.1\CMakeSystem.cmake;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\config.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.pc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\freeglut.rc.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_version.h.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\freeglutdll.def.in;I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include\GL\freeglut.h" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include\GL\freeglut_ext.h" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include\GL\freeglut_std.h" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\include\GL\glut.h" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_callbacks.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_cursor.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_display.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_ext.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_font_data.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_gamemode.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_geometry.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_gl2.c" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_gl2.h" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_init.c" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_init.h" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_internal.h" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_input_devices.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_joystick.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_main.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_misc.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_overlay.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_spaceball.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_state.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_stroke_mono_roman.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_stroke_roman.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_structure.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_teapot.c" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_teapot_data.h" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_videoresize.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_window.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_font.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\fg_menu.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_cursor_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_display_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_ext_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_gamemode_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_init_mswin.c" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_internal_mswin.h" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_input_devices_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_joystick_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_main_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_menu_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_spaceball_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_state_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_structure_mswin.c" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\mswin\fg_window_mswin.c" />
+    <ResourceCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\freeglut.rc" />
+    <None Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\freeglutdll.def" />
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\util\xparsegeometry_repl.c" />
+    <ClInclude Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\src\util\xparsegeometry_repl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\build\ZERO_CHECK.vcxproj">
+      <Project>{A441773F-11D3-3877-B29F-149CE68153A5}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

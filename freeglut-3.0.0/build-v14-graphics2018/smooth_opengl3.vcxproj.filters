@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="I:\courses\cap4730_Fall2018\projects\proj1_mesh\_gradingsolution_ codeupgrade_2018_\proj1_mesh_grading\src\freeglut-3.0.0\progs\demos\smooth_opengl3\smooth_opengl3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{46F4C49B-B59D-3425-8F20-86D0EEA12E5F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
