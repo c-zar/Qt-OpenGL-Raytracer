@@ -19,6 +19,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color)
     m_color = color;
     m_transparent = 0;
     reflective = false;
+    initVertexBuffer();
 }
 
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float transparent)
@@ -30,6 +31,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float tr
     m_color = color;
     m_transparent = transparent;
     reflective = false;
+    initVertexBuffer();
 }
 
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective)
@@ -40,6 +42,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool ref
     m_c = c;
     m_color = color;
     reflective = reflective;
+    initVertexBuffer();
 }
 
 // clean up
