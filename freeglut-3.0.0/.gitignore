@@ -12,7 +12,7 @@ configure.cache
 config.log
 config.status
 # config.h.in is now static and used with CMake, keep it:
-#config.h.in
+#in
 config.h
 depcomp
 install-sh
