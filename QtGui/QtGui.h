@@ -2,6 +2,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_QtGui.h"
+#include <STVector3.h>
+#include <vector>
+#include <Sphere.h>
+#include "Create_Sphere.h"
+#include <QStringListModel>
 
 class QtGui : public QMainWindow
 {
@@ -10,6 +15,20 @@ class QtGui : public QMainWindow
 public:
     QtGui(QWidget *parent = Q_NULLPTR);
 
+private slots:
+	void on_btnAddShape_clicked();
+
 private:
-    Ui::QtGuiClass ui;
+	Ui::QtGuiClass *ui;
+
+	std::vector<Sphere>      sphereList;
+	std::vector<QString> sphereInfoList;
+
+	//functions
+	void openCreateSpherePage(STVector3 &center, float &radius);
+	void openCreateTrianglePage(STVector3 &a, STVector3 &b, STVector3 &c);
+
+	void updateShapesList();
+
+
 };

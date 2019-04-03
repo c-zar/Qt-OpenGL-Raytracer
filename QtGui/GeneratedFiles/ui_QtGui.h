@@ -13,7 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -26,12 +26,12 @@ class Ui_QtGuiClass
 public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QListView *listView;
+    myGLWidget *openGLWidget;
     QWidget *widget;
     QGridLayout *gridLayout_2;
-    QComboBox *comboBox;
-    QPushButton *pushButton;
-    myGLWidget *openGLWidget;
+    QComboBox *comboBoxShapeType;
+    QPushButton *btnAddShape;
+    QListWidget *shapesList;
 
     void setupUi(QMainWindow *QtGuiClass)
     {
@@ -51,46 +51,48 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        listView = new QListView(centralWidget);
-        listView->setObjectName(QString::fromUtf8("listView"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(listView->sizePolicy().hasHeightForWidth());
-        listView->setSizePolicy(sizePolicy1);
+        openGLWidget = new myGLWidget(centralWidget);
+        openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
 
-        gridLayout->addWidget(listView, 0, 0, 1, 1);
+        gridLayout->addWidget(openGLWidget, 0, 1, 2, 1);
 
         widget = new QWidget(centralWidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy1);
         widget->setMinimumSize(QSize(0, 100));
         widget->setBaseSize(QSize(0, 0));
         gridLayout_2 = new QGridLayout(widget);
         gridLayout_2->setSpacing(6);
         gridLayout_2->setContentsMargins(11, 11, 11, 11);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        comboBox = new QComboBox(widget);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBoxShapeType = new QComboBox(widget);
+        comboBoxShapeType->addItem(QString());
+        comboBoxShapeType->addItem(QString());
+        comboBoxShapeType->setObjectName(QString::fromUtf8("comboBoxShapeType"));
 
-        gridLayout_2->addWidget(comboBox, 0, 0, 1, 1);
+        gridLayout_2->addWidget(comboBoxShapeType, 0, 0, 1, 1);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        btnAddShape = new QPushButton(widget);
+        btnAddShape->setObjectName(QString::fromUtf8("btnAddShape"));
 
-        gridLayout_2->addWidget(pushButton, 0, 1, 1, 1);
+        gridLayout_2->addWidget(btnAddShape, 0, 1, 1, 1);
 
 
         gridLayout->addWidget(widget, 1, 0, 1, 1);
 
-        openGLWidget = new myGLWidget(centralWidget);
-        openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
+        shapesList = new QListWidget(centralWidget);
+        shapesList->setObjectName(QString::fromUtf8("shapesList"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(shapesList->sizePolicy().hasHeightForWidth());
+        shapesList->setSizePolicy(sizePolicy2);
 
-        gridLayout->addWidget(openGLWidget, 0, 1, 2, 1);
+        gridLayout->addWidget(shapesList, 0, 0, 1, 1);
 
         QtGuiClass->setCentralWidget(centralWidget);
 
@@ -102,7 +104,10 @@ public:
     void retranslateUi(QMainWindow *QtGuiClass)
     {
         QtGuiClass->setWindowTitle(QApplication::translate("QtGuiClass", "QtGui", nullptr));
-        pushButton->setText(QApplication::translate("QtGuiClass", "PushButton", nullptr));
+        comboBoxShapeType->setItemText(0, QApplication::translate("QtGuiClass", "Sphere", nullptr));
+        comboBoxShapeType->setItemText(1, QApplication::translate("QtGuiClass", "Triangle", nullptr));
+
+        btnAddShape->setText(QApplication::translate("QtGuiClass", "Add Shape", nullptr));
     } // retranslateUi
 
 };

@@ -42,6 +42,9 @@
     <ClCompile Include="myGLWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Create_Sphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QtGui.ui">
@@ -51,6 +54,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Triangle.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Create_Sphere.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -64,6 +70,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="myGLWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Create_Sphere.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -59,8 +59,8 @@
       <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtWidgets;..\libst-2018\include;..\zlib-1.2.11;..\libpng-1.6.35;..\jpeg-9c;..\glew-2.1.0\include;..\freetype-2.9.1\include;..\freeglut-3.0.0\include;..\librt\include;..\glm-0.9.2.6;%(AdditionalIncludeDirectories);..\glfw-3.2.1\include;..\Simple-OpenGL-Image-Library-master\src;..\glm-0.9.2.6\glm</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -116,6 +116,7 @@
     </QtRcc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Create_Sphere.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myGLWidget.cpp" />
     <ClCompile Include="QtGui.cpp" />
@@ -124,6 +125,7 @@
     <QtMoc Include="QtGui.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Create_Sphere.ui" />
     <QtUic Include="QtGui.ui" />
     <QtUic Include="Sphere.ui" />
     <QtUic Include="Triangle.ui" />
@@ -139,6 +141,9 @@
     <None Include="..\mainsrc\Shaders\environment.vert" />
     <None Include="..\mainsrc\Shaders\reflection.frag" />
     <None Include="..\mainsrc\Shaders\reflection.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Create_Sphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
