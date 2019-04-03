@@ -61,6 +61,7 @@ STVector3* Triangle::getVertices()
 
 void Triangle::initVertexBuffer()
 {
+    vertexBuffer = new float[9];
     vertexBuffer[0] = m_a.x;
     vertexBuffer[1] = m_a.y;
     vertexBuffer[2] = m_a.z;

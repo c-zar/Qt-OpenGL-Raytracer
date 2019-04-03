@@ -13,7 +13,6 @@
 #include "Surface.h"
 
 class Triangle : public Surface {
-
 public:
     Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color);
     Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float transparent);
@@ -21,7 +20,7 @@ public:
 
     ~Triangle(void);
 
-    bool FindIntersection(Ray ray, Intersection* pIntersection); // compute ray triangle intersections
+    bool FindIntersection(Ray ray, Intersection* pIntersection) override; // compute ray triangle intersections
     STVector3* getVertices();
     void initVertexBuffer();
 
@@ -30,10 +29,11 @@ private:
     STVector3 m_a;
     STVector3 m_b;
     STVector3 m_c;
-    float vertexBuffer[9] = {0};
+    float* vertexBuffer;
 
     // linear systems
-    bool IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C, double& u, double& v, double& w); // linear solver
+    bool IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C, double& u, double& v, double& w);
+    // linear solver
     STVector3 ComputeNormalVector(void); // returns the normal
 };
 

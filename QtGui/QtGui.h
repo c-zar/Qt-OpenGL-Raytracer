@@ -2,13 +2,11 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_QtGui.h"
-#include <STVector3.h>
-#include <vector>
-#include <Sphere.h>
-#include <Triangle.h>
 #include "Create_Sphere.h"
 #include "Create_Triangle.h"
 #include <QStringListModel>
+#include "myGLWidget.h"
+#include <QTimer>
 
 class QtGui : public QMainWindow
 {
@@ -22,6 +20,8 @@ private slots:
 
 private:
 	Ui::QtGuiClass *ui;
+    QTimer* timer;
+
 
 	std::vector<Sphere>  sphereList;
 	std::vector<QString> sphereInfoList;

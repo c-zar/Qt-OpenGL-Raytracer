@@ -12,7 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -27,18 +29,36 @@ public:
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     myGLWidget *openGLWidget;
+    QListWidget *shapesList;
     QWidget *widget;
     QGridLayout *gridLayout_2;
     QComboBox *comboBoxShapeType;
     QPushButton *btnAddShape;
-    QListWidget *shapesList;
+    QGridLayout *gridLayout_3;
+    QDoubleSpinBox *doubleSpinBox_2;
+    QDoubleSpinBox *doubleSpinBox_7;
+    QDoubleSpinBox *doubleSpinBox_12;
+    QDoubleSpinBox *doubleSpinBox_6;
+    QDoubleSpinBox *doubleSpinBox_11;
+    QDoubleSpinBox *doubleSpinBox_9;
+    QLabel *label_3;
+    QLabel *label_2;
+    QLabel *label;
+    QDoubleSpinBox *doubleSpinBox_3;
+    QDoubleSpinBox *doubleSpinBox_4;
+    QDoubleSpinBox *doubleSpinBox_5;
+    QDoubleSpinBox *doubleSpinBox_10;
+    QDoubleSpinBox *doubleSpinBox;
+    QDoubleSpinBox *doubleSpinBox_8;
+    QLabel *label_5;
+    QLabel *label_4;
 
     void setupUi(QMainWindow *QtGuiClass)
     {
         if (QtGuiClass->objectName().isEmpty())
             QtGuiClass->setObjectName(QString::fromUtf8("QtGuiClass"));
         QtGuiClass->setWindowModality(Qt::NonModal);
-        QtGuiClass->resize(900, 600);
+        QtGuiClass->resize(966, 690);
         centralWidget = new QWidget(QtGuiClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -56,13 +76,23 @@ public:
 
         gridLayout->addWidget(openGLWidget, 0, 1, 2, 1);
 
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        shapesList = new QListWidget(centralWidget);
+        shapesList->setObjectName(QString::fromUtf8("shapesList"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(shapesList->sizePolicy().hasHeightForWidth());
+        shapesList->setSizePolicy(sizePolicy1);
+
+        gridLayout->addWidget(shapesList, 0, 0, 1, 1);
+
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy2);
         widget->setMinimumSize(QSize(0, 100));
         widget->setBaseSize(QSize(0, 0));
         gridLayout_2 = new QGridLayout(widget);
@@ -74,25 +104,118 @@ public:
         comboBoxShapeType->addItem(QString());
         comboBoxShapeType->setObjectName(QString::fromUtf8("comboBoxShapeType"));
 
-        gridLayout_2->addWidget(comboBoxShapeType, 0, 0, 1, 1);
+        gridLayout_2->addWidget(comboBoxShapeType, 1, 0, 1, 1);
 
         btnAddShape = new QPushButton(widget);
         btnAddShape->setObjectName(QString::fromUtf8("btnAddShape"));
 
-        gridLayout_2->addWidget(btnAddShape, 0, 1, 1, 1);
+        gridLayout_2->addWidget(btnAddShape, 1, 1, 1, 1);
+
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
+        doubleSpinBox_2 = new QDoubleSpinBox(widget);
+        doubleSpinBox_2->setObjectName(QString::fromUtf8("doubleSpinBox_2"));
+
+        gridLayout_3->addWidget(doubleSpinBox_2, 1, 2, 1, 1);
+
+        doubleSpinBox_7 = new QDoubleSpinBox(widget);
+        doubleSpinBox_7->setObjectName(QString::fromUtf8("doubleSpinBox_7"));
+
+        gridLayout_3->addWidget(doubleSpinBox_7, 4, 2, 1, 1);
+
+        doubleSpinBox_12 = new QDoubleSpinBox(widget);
+        doubleSpinBox_12->setObjectName(QString::fromUtf8("doubleSpinBox_12"));
+
+        gridLayout_3->addWidget(doubleSpinBox_12, 5, 3, 1, 1);
+
+        doubleSpinBox_6 = new QDoubleSpinBox(widget);
+        doubleSpinBox_6->setObjectName(QString::fromUtf8("doubleSpinBox_6"));
+
+        gridLayout_3->addWidget(doubleSpinBox_6, 3, 1, 1, 1);
+
+        doubleSpinBox_11 = new QDoubleSpinBox(widget);
+        doubleSpinBox_11->setObjectName(QString::fromUtf8("doubleSpinBox_11"));
+
+        gridLayout_3->addWidget(doubleSpinBox_11, 5, 2, 1, 1);
+
+        doubleSpinBox_9 = new QDoubleSpinBox(widget);
+        doubleSpinBox_9->setObjectName(QString::fromUtf8("doubleSpinBox_9"));
+
+        gridLayout_3->addWidget(doubleSpinBox_9, 5, 1, 1, 1);
+
+        label_3 = new QLabel(widget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy3);
+
+        gridLayout_3->addWidget(label_3, 5, 0, 1, 1);
+
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        sizePolicy3.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy3);
+
+        gridLayout_3->addWidget(label_2, 1, 0, 1, 1);
+
+        label = new QLabel(widget);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout_3->addWidget(label, 0, 2, 1, 1);
+
+        doubleSpinBox_3 = new QDoubleSpinBox(widget);
+        doubleSpinBox_3->setObjectName(QString::fromUtf8("doubleSpinBox_3"));
+
+        gridLayout_3->addWidget(doubleSpinBox_3, 1, 3, 1, 1);
+
+        doubleSpinBox_4 = new QDoubleSpinBox(widget);
+        doubleSpinBox_4->setObjectName(QString::fromUtf8("doubleSpinBox_4"));
+
+        gridLayout_3->addWidget(doubleSpinBox_4, 3, 3, 1, 1);
+
+        doubleSpinBox_5 = new QDoubleSpinBox(widget);
+        doubleSpinBox_5->setObjectName(QString::fromUtf8("doubleSpinBox_5"));
+
+        gridLayout_3->addWidget(doubleSpinBox_5, 3, 2, 1, 1);
+
+        doubleSpinBox_10 = new QDoubleSpinBox(widget);
+        doubleSpinBox_10->setObjectName(QString::fromUtf8("doubleSpinBox_10"));
+
+        gridLayout_3->addWidget(doubleSpinBox_10, 4, 1, 1, 1);
+
+        doubleSpinBox = new QDoubleSpinBox(widget);
+        doubleSpinBox->setObjectName(QString::fromUtf8("doubleSpinBox"));
+
+        gridLayout_3->addWidget(doubleSpinBox, 1, 1, 1, 1);
+
+        doubleSpinBox_8 = new QDoubleSpinBox(widget);
+        doubleSpinBox_8->setObjectName(QString::fromUtf8("doubleSpinBox_8"));
+
+        gridLayout_3->addWidget(doubleSpinBox_8, 4, 3, 1, 1);
+
+        label_5 = new QLabel(widget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy3);
+
+        gridLayout_3->addWidget(label_5, 4, 0, 1, 1);
+
+        label_4 = new QLabel(widget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy3);
+
+        gridLayout_3->addWidget(label_4, 3, 0, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout_3, 0, 0, 1, 2);
 
 
         gridLayout->addWidget(widget, 1, 0, 1, 1);
-
-        shapesList = new QListWidget(centralWidget);
-        shapesList->setObjectName(QString::fromUtf8("shapesList"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(shapesList->sizePolicy().hasHeightForWidth());
-        shapesList->setSizePolicy(sizePolicy2);
-
-        gridLayout->addWidget(shapesList, 0, 0, 1, 1);
 
         QtGuiClass->setCentralWidget(centralWidget);
 
@@ -108,6 +231,11 @@ public:
         comboBoxShapeType->setItemText(1, QApplication::translate("QtGuiClass", "Triangle", nullptr));
 
         btnAddShape->setText(QApplication::translate("QtGuiClass", "Add Shape", nullptr));
+        label_3->setText(QApplication::translate("QtGuiClass", "Look at (W)", nullptr));
+        label_2->setText(QApplication::translate("QtGuiClass", "Position", nullptr));
+        label->setText(QApplication::translate("QtGuiClass", "Camera", nullptr));
+        label_5->setText(QApplication::translate("QtGuiClass", "Up (V)", nullptr));
+        label_4->setText(QApplication::translate("QtGuiClass", "Right (U)", nullptr));
     } // retranslateUi
 
 };
