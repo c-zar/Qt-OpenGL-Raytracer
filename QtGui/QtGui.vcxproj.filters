@@ -45,18 +45,18 @@
     <ClCompile Include="Create_Sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Create_Triangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QtGui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Sphere.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="Triangle.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="Create_Sphere.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Create_Triangle.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -73,6 +73,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Create_Sphere.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Create_Triangle.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

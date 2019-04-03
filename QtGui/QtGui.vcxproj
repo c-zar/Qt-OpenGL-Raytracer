@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Create_Sphere.cpp" />
+    <ClCompile Include="Create_Triangle.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myGLWidget.cpp" />
     <ClCompile Include="QtGui.cpp" />
@@ -126,9 +127,8 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Create_Sphere.ui" />
+    <QtUic Include="Create_Triangle.ui" />
     <QtUic Include="QtGui.ui" />
-    <QtUic Include="Sphere.ui" />
-    <QtUic Include="Triangle.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QtGui.qrc" />
@@ -144,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Create_Sphere.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Create_Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

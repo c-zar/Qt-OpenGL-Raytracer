@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Create_Triangle</class>
+ <widget class="QDialog" name="Create_Triangle">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Create_Triangle</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>58</x>
+     <y>10</y>
+     <width>98</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>x</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV3Z">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>142</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV1X">
+   <property name="geometry">
+    <rect>
+     <x>58</x>
+     <y>50</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV1Z">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>50</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV2Z">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>96</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV3Y">
+   <property name="geometry">
+    <rect>
+     <x>163</x>
+     <y>142</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>142</y>
+     <width>31</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>V3</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>163</x>
+     <y>10</y>
+     <width>98</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>y</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>268</x>
+     <y>10</y>
+     <width>98</width>
+     <height>33</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>z</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>96</y>
+     <width>31</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>V2</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV1Y">
+   <property name="geometry">
+    <rect>
+     <x>163</x>
+     <y>50</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV2Y">
+   <property name="geometry">
+    <rect>
+     <x>163</x>
+     <y>96</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV3X">
+   <property name="geometry">
+    <rect>
+     <x>58</x>
+     <y>142</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="doubleSpinBoxV2X">
+   <property name="geometry">
+    <rect>
+     <x>58</x>
+     <y>96</y>
+     <width>98</width>
+     <height>39</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>31</width>
+     <height>39</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>V1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnOK">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>230</y>
+     <width>145</width>
+     <height>42</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
