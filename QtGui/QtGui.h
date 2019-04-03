@@ -5,7 +5,9 @@
 #include <STVector3.h>
 #include <vector>
 #include <Sphere.h>
+#include <Triangle.h>
 #include "Create_Sphere.h"
+#include "Create_Triangle.h"
 #include <QStringListModel>
 
 class QtGui : public QMainWindow
@@ -21,8 +23,11 @@ private slots:
 private:
 	Ui::QtGuiClass *ui;
 
-	std::vector<Sphere>      sphereList;
+	std::vector<Sphere>  sphereList;
 	std::vector<QString> sphereInfoList;
+
+	std::vector<Triangle> triangleList;
+	std::vector<QString>  triangleInfoList;
 
 	//functions
 	void openCreateSpherePage(STVector3 &center, float &radius);
