@@ -11,7 +11,8 @@
 
 // contructor
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color)
-    : Surface(){
+    : Surface()
+{
     m_a = a;
     m_b = b;
     m_c = c;
@@ -21,7 +22,8 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color)
 }
 
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float transparent)
-    : Surface(){
+    : Surface()
+{
     m_a = a;
     m_b = b;
     m_c = c;
@@ -41,7 +43,32 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool ref
 }
 
 // clean up
-Triangle::~Triangle(){
+Triangle::~Triangle()
+{
+}
+
+STVector3* Triangle::getVertices()
+{
+    STVector3 verts[3];
+    verts[0] = this->m_a;
+    verts[1] = this->m_b;
+    verts[2] = this->m_c;
+    return verts;
+}
+
+void Triangle::initVertexBuffer()
+{
+    vertexBuffer[0] = m_a.x;
+    vertexBuffer[1] = m_a.y;
+    vertexBuffer[2] = m_a.z;
+
+    vertexBuffer[3] = m_b.x;
+    vertexBuffer[4] = m_b.y;
+    vertexBuffer[5] = m_b.z;
+
+    vertexBuffer[6] = m_c.x;
+    vertexBuffer[7] = m_c.y;
+    vertexBuffer[8] = m_c.z;
 }
 
 //-----------------------------------------------------------------
@@ -51,7 +78,8 @@ Triangle::~Triangle(){
 // Returns true if found, otherwise false
 //-----------------------------------------------------------------
 bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C,
-                                  double& beta, double& gamma, double& t){
+    double& beta, double& gamma, double& t)
+{
     LinearSolver L;
     // TO DO: Proj2 raytracer
     //          - Solve for intersections.
@@ -86,16 +114,15 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
     double H, double I, double J, double K,
     double L, double M, double N, double P,
     double &u, double &v, double& w*/
-    if(L.Run_method3(
-        xA - xB, xA - xC, xD, xE - xA,
-        yA - yB, yA - yC, yD, yE - yA,
-        zA - zB, zA - zC, zD, zE - zA,
-        beta, gamma, t)){
-        if(t < EPSILON){
+    if (L.Run_method3(
+            xA - xB, xA - xC, xD, xE - xA,
+            yA - yB, yA - yC, yD, yE - yA,
+            zA - zB, zA - zC, zD, zE - zA,
+            beta, gamma, t)) {
+        if (t < EPSILON) {
             return false;
         }
-    }
-    else{
+    } else {
         return false;
     }
 
@@ -149,7 +176,8 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
 // If an intersection exist, return true; otherwise false
 // return the intersection point information in pIntersection
 //-----------------------------------------------------------------------------
-bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection){
+bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection)
+{
     bool bFound = false;
 
     // TO DO: Proj2 raytracer
@@ -168,7 +196,7 @@ bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection){
     double gamma = 0;
     double time = 0;
 
-    if(IntersectionSolver(ray, this->m_a, this->m_b, this->m_c, beta, gamma, time)){
+    if (IntersectionSolver(ray, this->m_a, this->m_b, this->m_c, beta, gamma, time)) {
 
         if (beta < 0.0)
             return false;
@@ -194,7 +222,8 @@ bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection){
 //-------------------------------------------------
 // Computes the normal vector
 //-------------------------------------------------
-STVector3 Triangle::ComputeNormalVector(void){
+STVector3 Triangle::ComputeNormalVector(void)
+{
     STVector3 normal;
     STVector3 V = m_b - m_a;
     STVector3 W = m_c - m_a;

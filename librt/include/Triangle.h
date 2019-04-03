@@ -22,12 +22,15 @@ public:
     ~Triangle(void);
 
     bool FindIntersection(Ray ray, Intersection* pIntersection); // compute ray triangle intersections
+    STVector3* getVertices();
+    void initVertexBuffer();
 
 private:
     // vertices
     STVector3 m_a;
     STVector3 m_b;
     STVector3 m_c;
+    float vertexBuffer[9] = {0};
 
     // linear systems
     bool IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C, double& u, double& v, double& w); // linear solver
