@@ -29,7 +29,7 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Shaders">
-      <UniqueIdentifier>{3326f07c-5096-4d29-861b-345508da4f5d}</UniqueIdentifier>
+      <UniqueIdentifier>{ef6128d5-f7d8-43cc-8f89-deddfd523297}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -80,16 +80,16 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\mainsrc\Shaders\environment.frag">
+    <None Include="Shaders\environment.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\mainsrc\Shaders\environment.vert">
+    <None Include="Shaders\environment.vert">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\mainsrc\Shaders\reflection.frag">
+    <None Include="Shaders\simple.frag">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="..\mainsrc\Shaders\reflection.vert">
+    <None Include="Shaders\simple.vert">
       <Filter>Shaders</Filter>
     </None>
   </ItemGroup>

@@ -1,26 +1,45 @@
 #pragma once
 
-#include "GL/glew.h"
+#define GLEW_STATIC
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <Gl/GL.h>
+#include <Gl/GLU.h>
+#include <Gl/glut.h>
+#include <glm.hpp>
+
+#include <QOpenGLBuffer>
+#include <QOpenGLFunctions>
 #include <QtWidgets/qopenglwidget.h>
 #include <QtWidgets/qwidget.h>
-#include <QOpenGLFunctions>
 #include <STVector3.h>
-#include <vector>
 #include <Sphere.h>
 #include <Triangle.h>
+#include <qopenglshaderprogram.h>
+#include <qopenglvertexarrayobject.h>
+#include <qopenglwidget.h>
+#include <vector>
 
 class myGLWidget : public QOpenGLWidget, protected QOpenGLFunctions {
     Q_OBJECT
 public:
-    myGLWidget(QWidget* parent = 0, std::vector<Sphere>* sphereList = nullptr,
-        std::vector<Triangle>* triangleList = nullptr);
+    myGLWidget(QWidget* parent = 0);
     ~myGLWidget();
+
+    void initLists(std::vector<Sphere>* sphereList, std::vector<Triangle>* triangleList);
+    void test();
 
 public:
     std::vector<uint32_t> VAOs;
     std::vector<Sphere>* sphereList;
     std::vector<Triangle>* triangleList;
-    QOpenGLContext* m_context;
+
+    QOpenGLContext* context;
+
+    QOpenGLShaderProgram* shaderProgram;
+    QOpenGLVertexArrayObject VAO;
+    QOpenGLBuffer VBO;
 
 private:
     void initializeGL();

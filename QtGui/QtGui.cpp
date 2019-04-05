@@ -6,6 +6,7 @@ QtGui::QtGui(QWidget* parent)
 {
     timer = new QTimer(this);
     ui->setupUi(this);
+    ui->openGLWidget->initLists(&sphereList, &triangleList);
 }
 
 void QtGui::on_btnAddShape_clicked()
@@ -73,4 +74,6 @@ void QtGui::updateShapesList()
     for (int i = 0; i < triangleInfoList.size(); i++) {
         ui->shapesList->addItem(triangleInfoList.at(i));
     }
+
+    ui->openGLWidget->test();
 }

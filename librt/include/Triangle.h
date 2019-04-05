@@ -24,12 +24,14 @@ public:
     STVector3* getVertices();
     void initVertexBuffer();
 
+public:
+    float* vertexBuffer;
+
 private:
     // vertices
     STVector3 m_a;
     STVector3 m_b;
     STVector3 m_c;
-    float* vertexBuffer;
 
     // linear systems
     bool IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C, double& u, double& v, double& w);

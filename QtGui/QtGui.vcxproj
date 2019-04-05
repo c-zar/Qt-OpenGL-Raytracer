@@ -33,6 +33,7 @@
     <OutDir>$(ProjectDir)bin\$(ProjectName)\$(Configuration)\</OutDir>
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(ProjectDir)bin\$(ProjectName)\$(Configuration)\objs\</IntDir>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -65,7 +66,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(QTDIR)\bin;..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;glfw.lib;libst.lib;freeglut_staticd.lib;glew32.lib;freetype.lib;zlib.lib;libpng.lib;libjpeg.lib;opengl32.lib;librt.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -137,16 +138,16 @@
     <QtMoc Include="myGLWidget.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\mainsrc\Shaders\environment.frag" />
-    <None Include="..\mainsrc\Shaders\environment.vert" />
-    <None Include="..\mainsrc\Shaders\reflection.frag" />
-    <None Include="..\mainsrc\Shaders\reflection.vert" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="Create_Sphere.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Create_Triangle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\environment.frag" />
+    <None Include="Shaders\environment.vert" />
+    <None Include="Shaders\simple.frag" />
+    <None Include="Shaders\simple.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
