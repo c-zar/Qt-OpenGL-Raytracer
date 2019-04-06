@@ -19,6 +19,7 @@
 #include <qopenglshaderprogram.h>
 #include <qopenglvertexarrayobject.h>
 #include <qopenglwidget.h>
+#include <QVector>
 #include <vector>
 
 class myGLWidget : public QOpenGLWidget, protected QOpenGLFunctions {
@@ -31,15 +32,14 @@ public:
     void test();
 
 public:
-    std::vector<uint32_t> VAOs;
     std::vector<Sphere>* sphereList;
     std::vector<Triangle>* triangleList;
 
     QOpenGLContext* context;
 
     QOpenGLShaderProgram* shaderProgram;
-    QOpenGLVertexArrayObject VAO;
-    QOpenGLBuffer VBO;
+    std::vector<QOpenGLVertexArrayObject*> VAOs;
+    std::vector<QOpenGLBuffer*> VBOs;
 
 private:
     void initializeGL();

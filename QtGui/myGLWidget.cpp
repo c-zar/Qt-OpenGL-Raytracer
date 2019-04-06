@@ -67,28 +67,30 @@ void myGLWidget::initializeGL()
     shaderProgram = new QOpenGLShaderProgram();
     shaderProgram->addShaderFromSourceFile(QOpenGLShader::Vertex, "./Shaders/simple.vert");
     shaderProgram->addShaderFromSourceFile(QOpenGLShader::Fragment, "./Shaders/simple.frag");
-    shaderProgram->bindAttributeLocation("vertex", 0);
     shaderProgram->link();
     shaderProgram->bind();
 
-    VAO.create();
-    QOpenGLVertexArrayObject::Binder vaoBinder(&VAO);
-    //shaderProgram->setAttributeBuffer(0, GL_FLOAT, 0, 3);
+    QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
+    QOpenGLBuffer* VBO = new QOpenGLBuffer();
 
-    VBO.create();
-    VBO.bind();
-    VBO.allocate(testVerts, 9 * sizeof(float));
+    VAO->create();
+    VAO->bind();
 
-    QOpenGLFunctions* f = QOpenGLContext::currentContext()->functions();
+    VBO->create();
+    VBO->bind();
+    VBO->allocate(testVerts, 9 * sizeof(float));
 
     //VBO.bind();
-    f->glEnableVertexAttribArray(0);
-    f->glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
     //VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
 
-    //VAO.release();
-    VBO.release();
+    VAO->release();
+    VBO->release();
+
+    VAOs.push_back(VAO);
+    VBOs.push_back(VBO);
 
     shaderProgram->release();
 }
@@ -98,9 +100,15 @@ void myGLWidget::paintGL()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     shaderProgram->bind();
 
-    VAO.bind();
-    glDrawArrays(GL_TRIANGLES, 0, 3);
-    VAO.release();
+    //VAO->bind();
+
+    for (auto it = VAOs.begin(); it != VAOs.end(); it++) {
+        (*it)->bind();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+        (*it)->release();
+    }
+
+    //VAO->release();
 
     /*if (!triangleList->empty()) {
         float* vertices_ = triangleList->at(0).vertexBuffer
@@ -117,7 +125,7 @@ void myGLWidget::paintGL()
     ////glPopMatrix();
     //glEnd();
 
-  /*  glBegin(GL_QUADS);
+    /*  glBegin(GL_QUADS);
     glColor3f(0, 1, 0);
     GLUquadric* quad = gluNewQuadric();
     glPushMatrix();
