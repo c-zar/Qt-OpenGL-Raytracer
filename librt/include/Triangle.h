@@ -11,6 +11,7 @@
 #include "Ray.h"
 #include "STVector3.h"
 #include "Surface.h"
+#include <vector>
 
 class Triangle : public Surface {
 public:
@@ -22,10 +23,10 @@ public:
 
     bool FindIntersection(Ray ray, Intersection* pIntersection) override; // compute ray triangle intersections
     STVector3* getVertices();
-    void initVertexBuffer();
+
 
 public:
-    float* vertexBuffer;
+    std::vector<float> vertexArray;
 
 private:
     // vertices
@@ -37,6 +38,7 @@ private:
     bool IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C, double& u, double& v, double& w);
     // linear solver
     STVector3 ComputeNormalVector(void); // returns the normal
+    void initVertexArray();
 };
 
 #endif //__TRIANGLE_H__

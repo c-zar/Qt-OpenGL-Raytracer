@@ -19,7 +19,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color)
     m_color = color;
     m_transparent = 0;
     reflective = false;
-    initVertexBuffer();
+    initVertexArray();
 }
 
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float transparent)
@@ -31,7 +31,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float tr
     m_color = color;
     m_transparent = transparent;
     reflective = false;
-    initVertexBuffer();
+    initVertexArray();
 }
 
 Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective)
@@ -42,7 +42,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool ref
     m_c = c;
     m_color = color;
     reflective = reflective;
-    initVertexBuffer();
+    initVertexArray();
 }
 
 // clean up
@@ -59,20 +59,19 @@ STVector3* Triangle::getVertices()
     return verts;
 }
 
-void Triangle::initVertexBuffer()
+void Triangle::initVertexArray()
 {
-    vertexBuffer = new float[9];
-    vertexBuffer[0] = m_a.x;
-    vertexBuffer[1] = m_a.y;
-    vertexBuffer[2] = m_a.z;
+    vertexArray.push_back(m_a.x);
+    vertexArray.push_back(m_a.y);
+    vertexArray.push_back(m_a.z);
 
-    vertexBuffer[3] = m_b.x;
-    vertexBuffer[4] = m_b.y;
-    vertexBuffer[5] = m_b.z;
+    vertexArray.push_back(m_b.x);
+    vertexArray.push_back(m_b.y);
+    vertexArray.push_back(m_b.z);
 
-    vertexBuffer[6] = m_c.x;
-    vertexBuffer[7] = m_c.y;
-    vertexBuffer[8] = m_c.z;
+    vertexArray.push_back(m_c.x);
+    vertexArray.push_back(m_c.y);
+    vertexArray.push_back(m_c.z);
 }
 
 //-----------------------------------------------------------------

@@ -53,6 +53,8 @@ void QtGui::openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c)
 
     //add triangle obj to vector
     triangleList.push_back(Triangle(a, b, c, RGBR_f(255.0, 0, 0, 1)));
+    ui->openGLWidget->addNewTriangle();
+    
 
     //add triangle info to vector - REPLACE ONCE WE WRITE GETTER IN TRIANGLE
     QString triangleInfo = QString::fromStdString("TRIANGLE AT (" + std::to_string(a.x) + "," + std::to_string(a.y) + "," + std::to_string(a.z) + "),(" + std::to_string(b.x) + "," + std::to_string(b.y) + "," + std::to_string(b.z) + "),(" + std::to_string(c.x) + "," + std::to_string(c.y) + "," + std::to_string(c.z) + ")");
@@ -75,5 +77,4 @@ void QtGui::updateShapesList()
         ui->shapesList->addItem(triangleInfoList.at(i));
     }
 
-    ui->openGLWidget->test();
 }

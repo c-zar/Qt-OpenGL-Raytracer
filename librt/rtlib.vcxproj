@@ -67,6 +67,11 @@
     <PostBuildEvent>
       <Command>copy  "$(ProjectDir)\$(configuration)\$(ProjectName)$(TargetExt)"    "..\lib\$(Configuration)\$(ProjectName)$(TargetExt)" </Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalLibraryDirectories>..\lib\$(Configuration)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>

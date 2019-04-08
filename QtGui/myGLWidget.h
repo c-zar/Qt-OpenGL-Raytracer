@@ -3,6 +3,7 @@
 #define GLEW_STATIC
 
 #include <GL/glew.h>
+#include <GL/glu.h>
 #include <GLFW/glfw3.h>
 #include <Gl/GL.h>
 #include <Gl/GLU.h>
@@ -11,6 +12,7 @@
 
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
+#include <QVector>
 #include <QtWidgets/qopenglwidget.h>
 #include <QtWidgets/qwidget.h>
 #include <STVector3.h>
@@ -19,8 +21,7 @@
 #include <qopenglshaderprogram.h>
 #include <qopenglvertexarrayobject.h>
 #include <qopenglwidget.h>
-#include <QVector>
-#include <vector>
+#include <qvector.h>
 
 class myGLWidget : public QOpenGLWidget, protected QOpenGLFunctions {
     Q_OBJECT
@@ -29,17 +30,21 @@ public:
     ~myGLWidget();
 
     void initLists(std::vector<Sphere>* sphereList, std::vector<Triangle>* triangleList);
-    void test();
+    void addNewTriangle();
+    void addNewSphere();
 
 public:
     std::vector<Sphere>* sphereList;
     std::vector<Triangle>* triangleList;
 
     QOpenGLContext* context;
-
     QOpenGLShaderProgram* shaderProgram;
-    std::vector<QOpenGLVertexArrayObject*> VAOs;
-    std::vector<QOpenGLBuffer*> VBOs;
+
+    QVector<QOpenGLVertexArrayObject*> triangleVAOs;
+    QVector<QOpenGLBuffer*> triangleVBOs;
+
+    QVector<QOpenGLVertexArrayObject*> sphereVAOs;
+    QVector<QOpenGLBuffer*> sphereVBOs;
 
 private:
     void initializeGL();

@@ -44,16 +44,19 @@ public:
     {
         if (Create_Triangle->objectName().isEmpty())
             Create_Triangle->setObjectName(QString::fromUtf8("Create_Triangle"));
-        Create_Triangle->resize(255, 135);
+        Create_Triangle->resize(300, 200);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Create_Triangle->sizePolicy().hasHeightForWidth());
+        Create_Triangle->setSizePolicy(sizePolicy);
+        Create_Triangle->setMinimumSize(QSize(300, 200));
         gridLayout = new QGridLayout(Create_Triangle);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         label = new QLabel(Create_Triangle);
         label->setObjectName(QString::fromUtf8("label"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
 
@@ -87,6 +90,7 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(doubleSpinBoxV1X->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV1X->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV1X->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV1X->setMinimum(-1000.000000000000000);
         doubleSpinBoxV1X->setMaximum(1000.000000000000000);
 
@@ -96,6 +100,7 @@ public:
         doubleSpinBoxV1Y->setObjectName(QString::fromUtf8("doubleSpinBoxV1Y"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV1Y->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV1Y->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV1Y->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV1Y->setMinimum(-1000.000000000000000);
         doubleSpinBoxV1Y->setMaximum(1000.000000000000000);
 
@@ -105,6 +110,7 @@ public:
         doubleSpinBoxV1Z->setObjectName(QString::fromUtf8("doubleSpinBoxV1Z"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV1Z->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV1Z->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV1Z->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV1Z->setMinimum(-1000.000000000000000);
         doubleSpinBoxV1Z->setMaximum(1000.000000000000000);
 
@@ -121,6 +127,7 @@ public:
         doubleSpinBoxV2X->setObjectName(QString::fromUtf8("doubleSpinBoxV2X"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV2X->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV2X->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV2X->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV2X->setMinimum(-1000.000000000000000);
         doubleSpinBoxV2X->setMaximum(1000.000000000000000);
 
@@ -130,6 +137,7 @@ public:
         doubleSpinBoxV2Y->setObjectName(QString::fromUtf8("doubleSpinBoxV2Y"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV2Y->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV2Y->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV2Y->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV2Y->setMinimum(-1000.000000000000000);
         doubleSpinBoxV2Y->setMaximum(1000.000000000000000);
 
@@ -139,6 +147,7 @@ public:
         doubleSpinBoxV2Z->setObjectName(QString::fromUtf8("doubleSpinBoxV2Z"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV2Z->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV2Z->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV2Z->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV2Z->setMinimum(-1000.000000000000000);
         doubleSpinBoxV2Z->setMaximum(1000.000000000000000);
 
@@ -155,6 +164,7 @@ public:
         doubleSpinBoxV3X->setObjectName(QString::fromUtf8("doubleSpinBoxV3X"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV3X->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV3X->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV3X->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV3X->setMinimum(-1000.000000000000000);
         doubleSpinBoxV3X->setMaximum(1000.000000000000000);
 
@@ -164,6 +174,7 @@ public:
         doubleSpinBoxV3Y->setObjectName(QString::fromUtf8("doubleSpinBoxV3Y"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV3Y->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV3Y->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV3Y->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV3Y->setMinimum(-1000.000000000000000);
         doubleSpinBoxV3Y->setMaximum(1000.000000000000000);
 
@@ -173,6 +184,7 @@ public:
         doubleSpinBoxV3Z->setObjectName(QString::fromUtf8("doubleSpinBoxV3Z"));
         sizePolicy1.setHeightForWidth(doubleSpinBoxV3Z->sizePolicy().hasHeightForWidth());
         doubleSpinBoxV3Z->setSizePolicy(sizePolicy1);
+        doubleSpinBoxV3Z->setMinimumSize(QSize(0, 20));
         doubleSpinBoxV3Z->setMinimum(-1000.000000000000000);
         doubleSpinBoxV3Z->setMaximum(1000.000000000000000);
 
