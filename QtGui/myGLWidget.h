@@ -18,6 +18,7 @@
 #include <STVector3.h>
 #include <Sphere.h>
 #include <Triangle.h>
+#include <Cylinder.h>
 #include <qopenglshaderprogram.h>
 #include <qopenglvertexarrayobject.h>
 #include <qopenglwidget.h>
@@ -32,10 +33,13 @@ public:
     void initLists(std::vector<Sphere>* sphereList, std::vector<Triangle>* triangleList);
     void addNewTriangle();
     void addNewSphere();
+    void test();
 
 public:
     std::vector<Sphere>* sphereList;
     std::vector<Triangle>* triangleList;
+    std::vector<Cylinder>* cylinderList;
+    
 
     QOpenGLContext* context;
     QOpenGLShaderProgram* shaderProgram;

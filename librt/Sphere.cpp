@@ -133,11 +133,6 @@ bool Sphere::CompareTo(Sphere sphere)
 // referenced http://www.songho.ca/opengl/gl_sphere.html
 void Sphere::initVertexArray()
 {
-    std::vector<float>().swap(vertices);
-    std::vector<float>().swap(normals);
-    std::vector<float>().swap(texCoords);
-    std::vector<unsigned int>().swap(indices);
-
     int sectorCount = 20;
     int stackCount = sectorCount / 2;
 
@@ -162,17 +157,13 @@ void Sphere::initVertexArray()
             // vertex position (x, y, z)
             x = xy * cosf(sectorAngle); // r * cos(u) * cos(v)
             y = xy * sinf(sectorAngle); // r * cos(u) * sin(v)
-            vertices.push_back(x);
-            vertices.push_back(y);
-            vertices.push_back(z);
+            vertices.push_back(STVector3(x, y, z));
 
             // normalized vertex normal (nx, ny, nz)
             nx = x * lengthInv;
             ny = y * lengthInv;
             nz = z * lengthInv;
-            normals.push_back(nx);
-            normals.push_back(ny);
-            normals.push_back(nz);
+            normals.push_back(STVector3(nx, ny, nz));
 
             // vertex tex coord (s, t) range between [0, 1]
             s = (float)j / sectorCount;

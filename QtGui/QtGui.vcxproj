@@ -119,6 +119,7 @@
   <ItemGroup>
     <ClCompile Include="Create_Sphere.cpp" />
     <ClCompile Include="Create_Triangle.cpp" />
+    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myGLWidget.cpp" />
     <ClCompile Include="QtGui.cpp" />
@@ -148,6 +149,9 @@
     <None Include="Shaders\environment.vert" />
     <None Include="Shaders\simple.frag" />
     <None Include="Shaders\simple.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cylinder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -31,6 +31,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{ef6128d5-f7d8-43cc-8f89-deddfd523297}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shapes">
+      <UniqueIdentifier>{f2b21082-2d94-4789-8dac-94768bde9b5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="Create_Triangle.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>Shapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,5 +98,10 @@
     <None Include="Shaders\simple.vert">
       <Filter>Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cylinder.h">
+      <Filter>Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

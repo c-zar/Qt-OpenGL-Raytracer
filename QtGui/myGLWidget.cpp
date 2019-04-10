@@ -125,7 +125,7 @@ void myGLWidget::initializeGL()
     shaderProgram->release();
 }
 
-void myGLWidget::paintGL()
+void myGLWidget::test()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //shaderProgram->bind();
@@ -145,6 +145,16 @@ void myGLWidget::paintGL()
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glPopMatrix();
     }
+
+    //for (auto it = cylinderList->begin(); it != cylinderList->end(); it++) {
+    //    glMatrixMode(GL_MODELVIEW);
+    //    glPushMatrix();
+    //    glColor3f(1, 1, 0);
+    //    //glEnableClientState(GL_VERTEX_ARRAY);
+    //    //glVertexPointer(3, GL_FLOAT, 0, &(*it).vertexArray[0]);
+    //    //glDrawArrays(GL_TRIANGLES, 0, 3);
+    //    glPopMatrix();
+    //}
 
     for (auto it = sphereList->begin(); it != sphereList->end(); it++) {
         glMatrixMode(GL_MODELVIEW);
@@ -169,6 +179,11 @@ void myGLWidget::paintGL()
     }
 
     //shaderProgram->release();
+}
+
+void myGLWidget::paintGL()
+{
+    test();
 }
 
 void myGLWidget::resizeGL(int w, int h)
