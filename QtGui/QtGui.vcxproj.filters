@@ -54,6 +54,12 @@
     <ClCompile Include="Cylinder.cpp">
       <Filter>Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Create_Cylinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Create_Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QtGui.ui">
@@ -63,6 +69,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Create_Triangle.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Create_Cylinder.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Create_Light.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -82,6 +94,12 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Create_Triangle.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Create_Cylinder.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Create_Light.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

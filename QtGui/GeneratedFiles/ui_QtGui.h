@@ -52,6 +52,7 @@ public:
     QDoubleSpinBox *doubleSpinBox_8;
     QLabel *label_5;
     QLabel *label_4;
+    QPushButton *btnRender;
 
     void setupUi(QMainWindow *QtGuiClass)
     {
@@ -214,6 +215,11 @@ public:
 
         gridLayout_2->addLayout(gridLayout_3, 0, 0, 1, 2);
 
+        btnRender = new QPushButton(widget);
+        btnRender->setObjectName(QString::fromUtf8("btnRender"));
+
+        gridLayout_2->addWidget(btnRender, 2, 0, 1, 1);
+
 
         gridLayout->addWidget(widget, 1, 0, 1, 1);
 
@@ -236,6 +242,7 @@ public:
         label->setText(QApplication::translate("QtGuiClass", "Camera", nullptr));
         label_5->setText(QApplication::translate("QtGuiClass", "Up (V)", nullptr));
         label_4->setText(QApplication::translate("QtGuiClass", "Right (U)", nullptr));
+        btnRender->setText(QApplication::translate("QtGuiClass", "Render", nullptr));
     } // retranslateUi
 
 };

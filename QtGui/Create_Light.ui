@@ -1,0 +1,23 @@
+<UI version="4.0" >
+ <class>Create_Light</class>
+ <widget class="QDialog" name="Create_Light" >
+  <property name="objectName" >
+   <string notr="true">Create_Light</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+	<x>0</x>
+	<y>0</y>
+	<width>400</width>
+	<height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Create_Light</string>
+  </property>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</UI>

@@ -1,4 +1,15 @@
 #include "QtGui.h"
+#include "Light.h"
+#include "RayTracer.h"
+#include "Scene.h"
+#include "Sphere.h"
+#include "Triangle.h"
+#include "defs.h"
+//#include "stglew.h"
+#include <map>
+#include <stdio.h>
+#include <string.h>
+
 
 QtGui::QtGui(QWidget* parent)
     : QMainWindow(parent)
@@ -25,6 +36,10 @@ void QtGui::on_btnAddShape_clicked()
         STVector3 c;
         openCreateTrianglePage(a, b, c);
     }
+}
+
+void QtGui::on_btnRender_clicked() {
+	renderRayTracing();
 }
 
 void QtGui::openCreateSpherePage(STVector3& center, float& radius)
@@ -77,4 +92,41 @@ void QtGui::updateShapesList()
         ui->shapesList->addItem(triangleInfoList.at(i));
     }
 
+}
+
+void QtGui::renderRayTracing() {
+	//setup
+	Scene *pScene = new Scene();
+
+	pScene->SetBackgroundColor(RGBR_f(200, 200, 200, 1.0f));
+
+	//Lights -------------------------------------------------------------------------------------------------------
+	Light scenelight = Light(STVector3(-100, 0, 0), RGBR_f(255, 255, 255, 1.0f), "Light1");
+	pScene->AddLight(scenelight);
+	//Lights -------------------------------------------------------------------------------------------------------
+
+	//Surfaces -------------------------------------------------------------------------------------------------------
+	//pScene->AddSurface(new Triangle(STVector3(-200, -200, 0), STVector3(-200, -200, 900), STVector3(200, -200, 0), RGBR_f(255, 255, 255, 1), true));
+	//pScene->AddSurface(new Triangle(STVector3(-200, -200, 900), STVector3(200, -200, 900), STVector3(200, -200, 0), RGBR_f(255, 255, 255, 1), true));
+	//pScene->AddSurface(new Sphere(-50, -150, 150, RGBR_f(255.0f, 0.0f, 0.0f, 1.0f), 50));
+	//pScene->AddSurface(new Sphere(50, -175, 100, RGBR_f(0, 0, 255, 1), 25, 0.5f));
+	//pScene->AddSurface(new Sphere(50, -125, 200, RGBR_f(0.0f, 255.0f, 0.0f, 1.0f), 75));
+
+	for (int i = 0; i < sphereList.size(); i++) {
+		pScene->AddSurface(&sphereList.at(i));
+	}
+
+	for (int i = 0; i < triangleList.size(); i++) {
+		pScene->AddSurface(&triangleList.at(i));
+	}
+
+	//Surfaces -------------------------------------------------------------------------------------------------------
+
+	// init a ray tracer object
+	RayTracer *pRayTracer = new RayTracer();
+
+	//run ray tracing
+	RenderMode mode = PHONG;
+	ProjectionType m_projectionType = PERSPECTIVE;
+	pRayTracer->Run(pScene, "test.png", mode, m_projectionType);
 }
