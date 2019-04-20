@@ -72,6 +72,14 @@ void Camera::SetPostion(STVector3 position)
     m_Position = position;
 }
 
+void Camera::SetLookAt(STVector3 lookAt, STVector3 up)
+{
+    // set w to look at the back of the camera
+    m_LookAt = lookAt;
+    m_Up = up;
+    SetUpAndRight();
+}
+
 //
 // This controlls camera zoom
 //

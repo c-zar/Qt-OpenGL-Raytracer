@@ -10,10 +10,12 @@ Create_Triangle::~Create_Triangle()
 {
 }
 
-void Create_Triangle::setReferences(STVector3 &a, STVector3 &b, STVector3 &c) {
+void Create_Triangle::setReferences(STVector3& a, STVector3& b, STVector3& c, QColor& color)
+{
 	aPtr = &a;
 	bPtr = &b;
 	cPtr = &c;
+    colorPtr = &color;
 }
 
 void Create_Triangle::on_btnOK_clicked() {
@@ -32,6 +34,8 @@ void Create_Triangle::on_btnOK_clicked() {
 	*aPtr = STVector3(v1x, v1y, v1z);
 	*bPtr = STVector3(v2x, v2y, v2z);
 	*cPtr = STVector3(v3x, v3y, v3z);
+
+    *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color");
 
 	this->close();
 }

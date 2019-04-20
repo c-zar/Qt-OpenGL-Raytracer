@@ -32,47 +32,28 @@ RayTracer::~RayTracer()
 // Main raytracing algorithm
 // Cast Ray, Compute Intersections, Shade pixel
 //-----------------------------------------------
-void RayTracer::Run(Scene* pScene, std::string fName, RenderMode mode, ProjectionType projectionType)
+void RayTracer::Run(Scene* pScene, std::string fName, RenderMode mode, ProjectionType projectionType, int width, int height)
 {
     // begin
     std::cout << "Running... " << std::endl;
 
     // set the shader's render mode
-    pShader->SetMode(mode);
-
-    int width = 400;
-    int height = 400;
-
+    renderMode = mode;
     pShader->SetMode(mode);
     RGBR_f bkground = pScene->GetBackgroundColor();
     STImage* pImg = new STImage(width, height, STImage::Pixel(bkground.r, bkground.b, bkground.g, bkground.a * 255));
 
-    // TO DO: Proj2 raytracer
-    //  Implement the ray tracing algorithm.
-    // 1. Cast a ray from the camera into the scene
-    //    Be sure to check projectionType -  var that sets the projection type
-    //    as parallel or perspective.
-    // 2. For every object in the scene compute intersections
-    // 3. Compute shading for the closest intersections
-    //       - no interection means shade to the background color
-    //       - one intersection - great compute shading
-    //       - otherwise implement any special handling to resolve
-    //         ambiguities (determine the best choice or throw an exception)
-    // 4. Save the output image
-    // NOTE: STImage stores colors in pixels in the range 0-255
-    // If you compute color channels in a range 0-1 you must convert
-    //------------------------------------------------
-    /* int width = 320;
-     int height = 400;*/
-    pScene->GetCamera()->Reset();
     float fov = 45;
     float focalLength = (width / 2) / tan(fov / 2);
-    pScene->GetCamera()->SetPostion(STVector3(0, 0, -focalLength));
+
     STVector3 U = pScene->GetCamera()->Right();
     STVector3 V = pScene->GetCamera()->Up();
     STVector3 W = pScene->GetCamera()->LookAt();
-    int left = -(width) / 2;
-    int right = (width) / 2;
+
+    STVector3 _camPos = pScene->GetCamera()->Position() + focalLength * W;
+
+    int left = (width) / 2;
+    int right = -(width) / 2;
     int bottom = -(height) / 2;
     int top = (height) / 2;
 
@@ -83,7 +64,6 @@ void RayTracer::Run(Scene* pScene, std::string fName, RenderMode mode, Projectio
                 float u = left + (right - left) * (i + 0.5f) / width;
                 float v = bottom + (top - bottom) * (j + 0.5f) / height;
                 Ray ray;
-                STVector3 E = STVector3(i, j, 0) + pScene->GetCamera()->Position();
                 ray.SetOrigin((u * U) + (v * V) + 0);
                 ray.SetDirection(-1.0f * W);
                 ray.Direction().Normalize();
@@ -116,9 +96,9 @@ void RayTracer::Run(Scene* pScene, std::string fName, RenderMode mode, Projectio
                 float u = left + (right - left) * (i + 0.5f) / width;
                 float v = bottom + (top - bottom) * (j + 0.5f) / height;
                 STVector3 pixPos = STVector3(u, v, 0);
-                STVector3 dir = STVector3(pixPos - pScene->GetCamera()->Position());
+                STVector3 dir = STVector3(pixPos - _camPos);
                 dir.Normalize();
-                ray.SetOrigin(pixPos);
+                ray.SetOrigin(pScene->GetCamera()->Position());
                 ray.SetDirection(dir);
                 Intersection* intersection = new Intersection();
                 int numInters = pScene->FindClosestIntersection(ray, intersection);
@@ -131,7 +111,7 @@ void RayTracer::Run(Scene* pScene, std::string fName, RenderMode mode, Projectio
                     STColor4ub pixelColor = STImage::Pixel(red, green, blue, alpha);
                     pImg->SetPixel(i, j, pixelColor);
                 } else {
-                    RGBR_f c = Shade(pScene, intersection, 1, RGBR_f(0,0,0,0));
+                    RGBR_f c = Shade(pScene, intersection, 1, RGBR_f(0, 0, 0, 0));
                     unsigned char red = std::min(255.0f, std::max(0.0f, c.r));
                     unsigned char green = std::min(255.0f, std::max(0.0f, c.g));
                     unsigned char blue = std::min(255.0f, std::max(0.0f, c.b));
@@ -176,14 +156,14 @@ RGBR_f RayTracer::Shade(Scene* pScene, Intersection* pIntersection, int level, R
         finalColor.g += color.g;
         finalColor.a += color.a;
 
-        if (pIntersection->surface->IsReflective() && currlevel < m_maxLevel) {
+        if (pIntersection->surface->IsReflective() && currlevel < m_maxLevel && renderMode == MIRROR) {
             currlevel++;
             STVector3 r = 2 * STVector3::Dot(pIntersection->normal, pIntersection->viewDirection) * pIntersection->normal - pIntersection->viewDirection;
             r.Normalize();
             Ray ray;
             ray.SetOrigin(pIntersection->point);
             ray.SetDirection(r);
-            if (pScene->FindIntersection(ray, pIntersection)){
+            if (pScene->FindIntersection(ray, pIntersection)) {
                 Shade(pScene, pIntersection, currlevel, finalColor);
             }
         }

@@ -23,34 +23,45 @@ void myGLWidget::initLists(std::vector<Sphere>* sphereList = nullptr,
     this->triangleList = triangleList;
 }
 
+void myGLWidget::setReferences(std::vector<Sphere>& sphereList, std::vector<Triangle>& triangleList, std::vector<Cylinder>& cylinderList, std::vector<Light>& lightList, Camera* camera, int& width, int& height)
+{
+    this->sphereList = &sphereList;
+    this->triangleList = &triangleList;
+    this->cylinderList = &cylinderList;
+    this->lightList = &lightList;
+    this->sceneCamera = camera;
+    this->width = &width;
+    this->height = &height;
+}
+
 void myGLWidget::addNewTriangle()
 {
-    Triangle* newTriangle = &triangleList->back();
+    //Triangle* newTriangle = &triangleList->back();
 
-    makeCurrent();
-    shaderProgram->bind();
-    QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
-    QOpenGLBuffer* VBO = new QOpenGLBuffer();
+    //makeCurrent();
+    //shaderProgram->bind();
+    //QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
+    //QOpenGLBuffer* VBO = new QOpenGLBuffer();
 
-    VAO->create();
-    VAO->bind();
+    //VAO->create();
+    //VAO->bind();
 
-    VBO->create();
-    VBO->bind();
-    VBO->allocate(&newTriangle->vertexArray[0], 9 * sizeof(float));
+    //VBO->create();
+    //VBO->bind();
+    //VBO->allocate(&newTriangle->vertexArray[0], 9 * sizeof(float));
 
-    //VBO.bind();
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+    ////VBO.bind();
+    //glEnableVertexAttribArray(0);
+    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
-    //VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
+    ////VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
 
-    VAO->release();
-    VBO->release();
+    //VAO->release();
+    //VBO->release();
 
-    triangleVAOs.push_back(VAO);
-    triangleVBOs.push_back(VBO);
-    shaderProgram->release();
+    //triangleVAOs.push_back(VAO);
+    //triangleVBOs.push_back(VBO);
+    //shaderProgram->release();
 }
 
 void myGLWidget::addNewSphere()
@@ -139,7 +150,8 @@ void myGLWidget::test()
     for (auto it = triangleList->begin(); it != triangleList->end(); it++) {
         glMatrixMode(GL_MODELVIEW);
         glPushMatrix();
-        glColor3f(1, 1, 0);
+        RGBR_f color = (*it).GetColor();
+        glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(3, GL_FLOAT, 0, &(*it).vertexArray[0]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -147,19 +159,20 @@ void myGLWidget::test()
     }
 
     //for (auto it = cylinderList->begin(); it != cylinderList->end(); it++) {
-    //    glMatrixMode(GL_MODELVIEW);
-    //    glPushMatrix();
-    //    glColor3f(1, 1, 0);
-    //    //glEnableClientState(GL_VERTEX_ARRAY);
-    //    //glVertexPointer(3, GL_FLOAT, 0, &(*it).vertexArray[0]);
-    //    //glDrawArrays(GL_TRIANGLES, 0, 3);
-    //    glPopMatrix();
+    //    //glMatrixMode(GL_MODELVIEW);
+    //    //glPushMatrix();
+    //    //glColor3f(1, 1, 0);
+    //    ////glEnableClientState(GL_VERTEX_ARRAY);
+    //    ////glVertexPointer(3, GL_FLOAT, 0, &(*it).vertexArray[0]);
+    //    ////glDrawArrays(GL_TRIANGLES, 0, 3);
+    //    //glPopMatrix();
     //}
 
     for (auto it = sphereList->begin(); it != sphereList->end(); it++) {
         glMatrixMode(GL_MODELVIEW);
         glPushMatrix();
-        glColor3f(1, 1, 0);
+        RGBR_f color = (*it).GetColor();
+        glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
 
         glEnableClientState(GL_VERTEX_ARRAY);
         glEnableClientState(GL_NORMAL_ARRAY);
@@ -188,11 +201,21 @@ void myGLWidget::paintGL()
 
 void myGLWidget::resizeGL(int w, int h)
 {
+    *width = w;
+    *height = h;
+    STVector3 camPos = sceneCamera->Position();
+    STVector3 camLookAt = sceneCamera->LookAt();
+    STVector3 camUp = sceneCamera->Up();
+    int halfW = w / 2;
+    int halfh = h / 2;
+
+
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45, (float)w / (float)h, 0.01, 100);
+    gluPerspective(45, (float)w / (float)h, 0.001, 1000);
+
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(0, 0, -5, 0, 0, 0, 0, 1, 0);
+    gluLookAt(camLookAt.x, camLookAt.y, camLookAt.z, camPos.x / halfW, camPos.y / halfh, camPos.z, camUp.x, camUp.y, camUp.z);
 }

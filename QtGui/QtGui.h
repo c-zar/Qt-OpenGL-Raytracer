@@ -1,43 +1,58 @@
 #pragma once
 
-#include <QtWidgets/QMainWindow>
-#include "ui_QtGui.h"
+#include "Create_Cylinder.h"
+#include "Create_Light.h"
 #include "Create_Sphere.h"
 #include "Create_Triangle.h"
-#include <QStringListModel>
+#include "Render.h"
+#include "Light.h"
+#include "RayTracer.h"
+#include "Scene.h"
+#include "Sphere.h"
+#include "Triangle.h"
 #include "myGLWidget.h"
+#include "ui_QtGui.h"
+#include <QStringListModel>
 #include <QTimer>
+#include <QtWidgets/QMainWindow>
 
-class QtGui : public QMainWindow
-{
+class QtGui : public QMainWindow {
     Q_OBJECT
 
 public:
-    QtGui(QWidget *parent = Q_NULLPTR);
+    QtGui(QWidget* parent = Q_NULLPTR);
 
 private slots:
-	void on_btnAddShape_clicked();
-	void on_btnRender_clicked();
+    void on_btnAddShape_clicked();
+    void on_btnRender_clicked();
+    void on_camPosX_valueChanged(double newVal);
 
 private:
-	Ui::QtGuiClass *ui;
+    Ui::QtGuiClass* ui;
     QTimer* timer;
+    Scene* pScene;
+    Camera* sceneCam;
 
-	std::vector<Sphere>  sphereList;
-	std::vector<QString> sphereInfoList;
+    int width;
+    int height;
 
-	std::vector<Triangle> triangleList;
-	std::vector<QString>  triangleInfoList;
+    std::vector<Sphere> sphereList;
+    std::vector<QString> sphereInfoList;
 
-	STVector3 cameraPosition;
-	STVector3 cameraLookAt;
-	STVector3 cameraUp;
+    std::vector<Triangle> triangleList;
+    std::vector<QString> triangleInfoList;
 
-	//functions
-	void openCreateSpherePage(STVector3 &center, float &radius);
-	void openCreateTrianglePage(STVector3 &a, STVector3 &b, STVector3 &c);
-	void updateShapesList();
-	void renderRayTracing();
+    std::vector<Cylinder> cylinderList;
+    std::vector<QString> cylinderInfoList;
 
+    std::vector<Light> lightList;
+    std::vector<QString> lightInfoList;
 
+    //functions
+    void openCreateSpherePage(STVector3& center, float& radius, QColor& color);
+    void openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c, QColor& color);
+    void openCreateLightPage(STVector3& origin, QColor& color);
+    void openCreateCylinderPage(STVector3& top, STVector3& bottom, float& radius, QColor& color);
+    void updateShapesList();
+    void renderRayTracing();
 };

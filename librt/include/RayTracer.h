@@ -5,47 +5,36 @@
 // a ray in the scene and computing ray/surface intersections
 //------------------------------------------------------------------------------
 
-
-
 #ifndef __RAYTRACER_H__
 #define __RAYTRACER_H__
 
-
-#include<string>
-#include "defs.h"
-#include "Scene.h"
 #include "RGBR_f.h"
+#include "Scene.h"
+#include "defs.h"
+#include <string>
 
 class Shader;
 class Camera;
 class Light;
 
-class RayTracer
-{
+class RayTracer {
 
 public:
-                                RayTracer                                       (void);
-                                ~RayTracer                                      (void);
+    RayTracer(void);
+    ~RayTracer(void);
 
-    void Run(Scene* pScene, std::string fName, RenderMode mode, ProjectionType projectionType);
-
-
-
-
+    void Run(Scene* pScene, std::string fName, RenderMode mode, ProjectionType projectionType, int width, int height);
 
 private:
+    Shader* pShader;
+    RenderMode renderMode;
 
-    Shader                      *pShader;
+    int m_maxLevel;
+    float m_intensityThreshold;
 
-    int                         m_maxLevel;
-    float                       m_intensityThreshold;
-
-    bool                        MinimumColor                                    (RGBR_f color);
+    bool MinimumColor(RGBR_f color);
 
     RGBR_f Shade(Scene* pScene, Intersection* pIntersection, int level, RGBR_f finalColor);
-
 };
 
-
 #endif //__RAYTRACER_H__
-

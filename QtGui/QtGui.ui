@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>966</width>
+    <width>900</width>
     <height>690</height>
    </rect>
   </property>
@@ -30,20 +30,7 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1" rowspan="2">
-     <widget class="myGLWidget" name="openGLWidget"/>
-    </item>
-    <item row="0" column="0">
-     <widget class="QListWidget" name="shapesList">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
+    <item row="4" column="0">
      <widget class="QWidget" name="widget" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -68,6 +55,11 @@
         <widget class="QComboBox" name="comboBoxShapeType">
          <item>
           <property name="text">
+           <string>Light</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
            <string>Sphere</string>
           </property>
          </item>
@@ -76,12 +68,17 @@
            <string>Triangle</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>Cylinder</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item row="1" column="1">
         <widget class="QPushButton" name="btnAddShape">
          <property name="text">
-          <string>Add Shape</string>
+          <string>Add</string>
          </property>
         </widget>
        </item>
@@ -90,23 +87,51 @@
          <property name="sizeConstraint">
           <enum>QLayout::SetDefaultConstraint</enum>
          </property>
-         <item row="1" column="2">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Position</string>
+           </property>
+          </widget>
          </item>
-         <item row="4" column="2">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_7"/>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Up (V)</string>
+           </property>
+          </widget>
          </item>
-         <item row="5" column="3">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_12"/>
+         <item row="2" column="3">
+          <widget class="QDoubleSpinBox" name="camPosZ">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+          </widget>
          </item>
-         <item row="3" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_6"/>
-         </item>
-         <item row="5" column="2">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_11"/>
-         </item>
-         <item row="5" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_9"/>
+         <item row="2" column="2">
+          <widget class="QDoubleSpinBox" name="camPosY">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+          </widget>
          </item>
          <item row="5" column="0">
           <widget class="QLabel" name="label_3">
@@ -121,67 +146,128 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+         <item row="5" column="1">
+          <widget class="QDoubleSpinBox" name="camLookX">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
            </property>
-           <property name="text">
-            <string>Position</string>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
+         <item row="6" column="3">
+          <widget class="QDoubleSpinBox" name="camUpZ">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>0.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="camPosX">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QDoubleSpinBox" name="camUpX">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="2">
+          <widget class="QDoubleSpinBox" name="camUpY">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QDoubleSpinBox" name="camLookY">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3">
+          <widget class="QDoubleSpinBox" name="camLookZ">
+           <property name="minimum">
+            <double>-1000.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1000.000000000000000</double>
+           </property>
+           <property name="value">
+            <double>-1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
           <widget class="QLabel" name="label">
            <property name="text">
             <string>Camera</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="3">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
-         </item>
-         <item row="3" column="3">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_4"/>
-         </item>
-         <item row="3" column="2">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_5"/>
-         </item>
-         <item row="4" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_10"/>
-         </item>
          <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
-         </item>
-         <item row="4" column="3">
-          <widget class="QDoubleSpinBox" name="doubleSpinBox_8"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="label_4">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Up (V)</string>
+            <string>x</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_4">
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_6">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Right (U)</string>
+            <string>y</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QLabel" name="label_7">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>z</string>
            </property>
           </widget>
          </item>
@@ -195,6 +281,26 @@
         </widget>
        </item>
       </layout>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="4" colspan="2">
+     <widget class="myGLWidget" name="openGLWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QListWidget" name="shapesList">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
      </widget>
     </item>
    </layout>
@@ -211,5 +317,22 @@
  <resources>
   <include location="QtGui.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>camLookX</sender>
+   <signal>valueChanged(QString)</signal>
+   <receiver>QtGuiClass</receiver>
+   <slot>update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>576</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>344</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

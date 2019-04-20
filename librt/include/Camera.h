@@ -22,7 +22,8 @@ public:
     void                    Strafe                                      (float delta_x, float delta_y);
     void                    Zoom                                        (float delta_y);
     void                    Rotate                                      (float delta_x, float delta_y);
-	void                    SetPostion                                  (STVector3 position);
+    void SetPostion(STVector3 position);
+    void SetLookAt(STVector3 lookAt, STVector3 up);
 
     STVector3               Position                                    (void);
     STVector3               LookAt                                      (void);

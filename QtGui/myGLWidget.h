@@ -10,6 +10,7 @@
 #include <Gl/glut.h>
 #include <glm.hpp>
 
+#include <Cylinder.h>
 #include <QOpenGLBuffer>
 #include <QOpenGLFunctions>
 #include <QVector>
@@ -18,7 +19,6 @@
 #include <STVector3.h>
 #include <Sphere.h>
 #include <Triangle.h>
-#include <Cylinder.h>
 #include <qopenglshaderprogram.h>
 #include <qopenglvertexarrayobject.h>
 #include <qopenglwidget.h>
@@ -31,6 +31,8 @@ public:
     ~myGLWidget();
 
     void initLists(std::vector<Sphere>* sphereList, std::vector<Triangle>* triangleList);
+    void setReferences(std::vector<Sphere>& sphereList, std::vector<Triangle>& triangleList, std::vector<Cylinder>& cylinderList, std::vector<Light>& lightList, Camera* camera, int& width, int& height);
+
     void addNewTriangle();
     void addNewSphere();
     void test();
@@ -39,7 +41,10 @@ public:
     std::vector<Sphere>* sphereList;
     std::vector<Triangle>* triangleList;
     std::vector<Cylinder>* cylinderList;
-    
+    std::vector<Light>* lightList;
+    Camera* sceneCamera;
+    int* width;
+    int* height;
 
     QOpenGLContext* context;
     QOpenGLShaderProgram* shaderProgram;

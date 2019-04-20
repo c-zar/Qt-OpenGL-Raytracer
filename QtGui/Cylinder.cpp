@@ -33,6 +33,10 @@ Cylinder::Cylinder(float x1, float y1, float z1, float x2, float y2, float z2, R
 {
     m_start = STVector3(x1, y1, z1);
     m_end = STVector3(x2, y2, z2);
+    STVector3 direction(m_start - m_end);
+    m_height = direction.Length();
+    direction.Normalize();
+    m_rotation = STVector3(acosf(direction.x), acosf(direction.y), acosf(direction.z));
     m_color = color;
     m_radius = radius;
     m_transparent = transparent;
@@ -46,6 +50,10 @@ Cylinder::Cylinder(float x1, float y1, float z1, float x2, float y2, float z2, R
 {
     m_start = STVector3(x1, y1, z1);
     m_end = STVector3(x2, y2, z2);
+    STVector3 direction(m_start - m_end);
+    m_height = direction.Length();
+    direction.Normalize();
+    m_rotation = STVector3(acosf(direction.x), acosf(direction.y), acosf(direction.z));
     m_color = color;
     m_radius = radius;
     reflective = reflective;
@@ -192,7 +200,6 @@ bool Cylinder::FindIntersection(Ray ray, Intersection* pIntersection)
     return true;
 }
 
-// referenced http://www.songho.ca/opengl/gl_sphere.html
 void Cylinder::initVertexArray()
 {
     int numSteps = 20;

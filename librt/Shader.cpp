@@ -154,8 +154,8 @@ void Shader::MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* lig
     // TO DO: Proj2 raytracer
     // Computes mirror reflections
     //--------------------------------------------------------------------
-    //Lambertian(pIntersection, light, color); // apply shading using lambertian
-    Phong(pScene, pIntersection, light, color);
+    Lambertian(pIntersection, light, color); // apply shading using lambertian
+    //Phong(pScene, pIntersection, light, color);
     STVector3 r = 2 * STVector3::Dot(pIntersection->normal, pIntersection->viewDirection) * pIntersection->normal - pIntersection->viewDirection;
     float strength = std::max(0.0f, STVector3::Dot(pIntersection->viewDirection, r));
     if (pIntersection->surface->IsReflective()) {

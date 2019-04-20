@@ -125,6 +125,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="myGLWidget.cpp" />
     <ClCompile Include="QtGui.cpp" />
+    <ClCompile Include="Render.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="QtGui.h" />
@@ -135,6 +136,7 @@
     <QtUic Include="Create_Sphere.ui" />
     <QtUic Include="Create_Triangle.ui" />
     <QtUic Include="QtGui.ui" />
+    <QtUic Include="Render.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QtGui.qrc" />
@@ -155,6 +157,7 @@
     <None Include="Shaders\simple.vert" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Render.h" />
     <QtMoc Include="Create_Cylinder.h" />
     <QtMoc Include="Create_Light.h" />
     <ClInclude Include="Cylinder.h" />
