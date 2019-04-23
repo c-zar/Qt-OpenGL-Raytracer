@@ -98,12 +98,15 @@ int Scene::FindIntersection(Ray ray, Intersection* pIntersection)
         // 1. Check for intersections
         // 2. Update the list of intersections
         // 3. Set bFound to true if an intersection was found
-        //---------------------------------------------------------
+        //---------------------------------------------------------------
+
+        // if intersection is found,
         if ((*iter)->FindIntersection(ray, pIntersection)) {
-            intersectionList.push_back((*pIntersection));
-            numPoints = 1;
-            bFound = true;
+            intersectionList.push_back((*pIntersection)); // push to intersection list
+            numPoints = 1; // set num points equal to 1
+            bFound = true; // set found to true
         }
+
         //----------------------------------------------------------------
     }
 
@@ -117,9 +120,11 @@ int Scene::FindIntersection(Ray ray, Intersection* pIntersection)
         // 2. set pIntersection to the closest intersection
         // 3. set the number of points and return
         //---------------------------------------------------------
+
+        // loop through the list
         for (size_t i = 0; i < intersectionList.size(); i++) {
-            if (intersectionList.at(i).time < pIntersection->time) {
-                (*pIntersection) = intersectionList.at(i);
+            if (intersectionList.at(i).time < pIntersection->time) { // compare the times of each intersection
+                (*pIntersection) = intersectionList.at(i); // find the lowest time and set to pIntersection
             }
         }
 

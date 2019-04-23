@@ -24,7 +24,8 @@ void Shader::SetMode(RenderMode mode)
 }
 
 // Runs the shader according to the specified render mode
-void Shader::Run(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color)
+// added color and recurse arguments. used for recursion. color now passed by reference and updates that way
+void Shader::Run(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color, bool& recurse)
 {
     switch (m_mode) {
     case LAMBERTIAN:
@@ -37,7 +38,7 @@ void Shader::Run(Scene* pScene, Intersection* pIntersection, Light* light, int l
         ShadowEffect(pScene, pIntersection, light, color);
         break;
     case MIRROR:
-        MirrorEffect(pScene, pIntersection, light, level, color);
+        MirrorEffect(pScene, pIntersection, light, level, color, recurse);
         break;
     case TRANSPARENCY:
         MakeTransparent(pScene, pIntersection, light, color);
@@ -54,10 +55,12 @@ void Shader::addAmbientLight(Intersection* pIntersection, RGBR_f* color)
     // TO DO: Proj2 raytracer
     // add ambient lighting
     //-----------------------------------------------------------------------
+    //adds the color intensity multiplied by the 'strength' so they don't just turn whitish
     float ambientStrength = 25;
-    color->r = std::min(color->r + ambientStrength, 255.0f);
-    color->g = std::min(color->g + ambientStrength, 255.0f);
-    color->b = std::min(color->b + ambientStrength, 255.0f);
+    //cap the color values to 255
+    color->r += std::min(color->r / 255 * ambientStrength, 255.0f);
+    color->g += std::min(color->g / 255 * ambientStrength, 255.0f);
+    color->b += std::min(color->b / 255 * ambientStrength, 255.0f);
     //----------------------------------------
 }
 
@@ -72,21 +75,23 @@ void Shader::Lambertian(Intersection* pIntersection, Light* light, RGBR_f* color
     //----------------------------------------------------------------
     assert(pIntersection);
     assert(light);
-    addAmbientLight(pIntersection, color);
-    STVector3 lightOrigin = light->GetPosition();
-    STVector3 lightV = lightOrigin - pIntersection->point;
-    float distance = lightV.Length();
-    lightV.Normalize();
-    float albedo = 0.2;
-    float lightIntensity = light->GetColor().a / distance;
+    STVector3 lightV = light->GetPosition() - pIntersection->point; // gets the direction to the light from the point on the surface
+    float lightIntensity = light->GetColor().a / lightV.LengthSq(); // calculate light intensity using the alpha channel and distance
+    lightV.Normalize(); // normalize the light direciton vector
+    // calculate the lambertian value and set the colors using the value
+    // Reference: Fundamentals of Computer Graphics, chapter 4
+    // Reference: powerpoint - "Ray Tracing"
+    // Reference: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/diffuse-lambertian-shading for albedo
     float lambert = std::max(0.0f, STVector3::Dot(pIntersection->normal, lightV));
-    color->r = (lambert * lightIntensity * light->GetColor().r * color->r * albedo);
-    color->g = (lambert * lightIntensity * light->GetColor().g * color->g * albedo);
-    color->b = (lambert * lightIntensity * light->GetColor().b * color->b * albedo);
+    color->r = (lambert * lightIntensity * light->GetColor().r * color->r);
+    color->g = (lambert * lightIntensity * light->GetColor().g * color->g);
+    color->b = (lambert * lightIntensity * light->GetColor().b * color->b);
+    addAmbientLight(pIntersection, color); // add ambient light at the end
     //-------------------------------------------------------------
 }
 
 // Implements diffuse shading using the lambertian lighting model
+// Phong (NOT Bling-Phong)
 void Shader::Phong(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color)
 {
     //need to pass in the viewPoint
@@ -100,26 +105,25 @@ void Shader::Phong(Scene* pScene, Intersection* pIntersection, Light* light, RGB
     // 2. Remember to add any attributes you might need for shading to
     //    your surface objects as they are passed in with the pIntersection
     //---------------------------------------------------------
-    STVector3 lightOrigin = light->GetPosition();
-    STVector3 lightV = lightOrigin - pIntersection->point;
-    float distance = lightV.Length();
-    lightV.Normalize();
-    addAmbientLight(pIntersection, color);
-    float p = 100; // the exponential
+    STVector3 lightV = light->GetPosition() - pIntersection->point; //direction of vector from point to light
+    float lightIntensity = light->GetColor().a / lightV.LengthSq(); // calculate light intensity using the alpha channel and distance
+    lightV.Normalize(); //normalize to just get direction components
+    float p = 24; // the exponential
+
+    // calculate the reflect vector using the light direction
+    // Reference: Fundamentals of Computer Graphics, chapter 4
+    // Reference: powerpoint - "Ray Tracing"
     STVector3 r = 2 * (STVector3::Dot(pIntersection->normal, lightV), pIntersection->normal) - lightV;
     r.Normalize();
-    float diffuse = std::max(0.0f, STVector3::Dot(pIntersection->normal, lightV));
-    float albedo = 0.2;
-    float lightIntensity = light->GetColor().a / distance;
-    float phong = powf(std::max(0.0f, STVector3::Dot(pIntersection->viewDirection, r)), p);
-    color->r = lightIntensity * light->GetColor().r * albedo * ((diffuse * color->r) + (phong * light->GetColor().r));
-    color->g = lightIntensity * light->GetColor().g * albedo * ((diffuse * color->g) + (phong * light->GetColor().g));
-    color->b = lightIntensity * light->GetColor().b * albedo * ((diffuse * color->b) + (phong * light->GetColor().b));
 
-    /*color->r = color->r * diffuse + phong * light->GetColor().r;
-    color->g = color->g * diffuse + phong * light->GetColor().g;
-    color->b = color->b * diffuse + phong * light->GetColor().b;*/
+    float diffuse = std::max(0.0f, STVector3::Dot(pIntersection->normal, lightV)); // get the diffuse factor using same method as lambertian
+    float phong = powf(std::max(0.0f, STVector3::Dot(pIntersection->viewDirection, r)), p); // calculate the phong factor from the reflect and view direction vectors
 
+    // used the book and slides for reference for equation
+    color->r = lightIntensity * light->GetColor().r * ((diffuse * color->r) + (phong * light->GetColor().r));
+    color->g = lightIntensity * light->GetColor().g * ((diffuse * color->g) + (phong * light->GetColor().g));
+    color->b = lightIntensity * light->GetColor().b * ((diffuse * color->b) + (phong * light->GetColor().b));
+    addAmbientLight(pIntersection, color); // add ambient light at the end
     //---------------------------------------------------------
 }
 
@@ -129,43 +133,66 @@ void Shader::ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* lig
     // TO DO: Proj2 raytracer
     // shadow effects - include results with multiple lights to soften shadows
     //--------------------------------------------------------------------
-    Lambertian(pIntersection, light, color);
-    STVector3 lightDirection = light->GetPosition();
-    STVector3 lightV = lightDirection - pIntersection->point;
+    Lambertian(pIntersection, light, color); // apply diffuse shading using lambertian
+
+    //calculate light direction and normalize
+    STVector3 lightV = light->GetPosition() - pIntersection->point;
     lightV.Normalize();
+
+    // get the intersection point and offset towards light direction to prevent intersection with itself
     STVector3 point = pIntersection->point;
     point += (0.1f * lightV);
+
+    // initialize a ray and temporary intersection. used to calculate intersection
     Ray ray;
     Intersection temp;
     ray.SetOrigin(point);
     ray.SetDirection(lightV);
     ray.Direction().Normalize();
+
+    // if there is an intersection dim the colors based on shadow/shading contribution
+    // Reference: powerpoint - "Ray Tracing Part 1."
     if (pScene->FindIntersection(ray, &temp)) {
-        color->r *= 0.7;
-        color->g *= 0.7;
-        color->b *= 0.7;
+        float shadowContribution = 0.3;
+        color->r *= shadowContribution;
+        color->g *= shadowContribution;
+        color->b *= shadowContribution;
     }
     //----------------------------------------------------------------
 }
 
 // Mirror reflection
-void Shader::MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color)
+void Shader::MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color, bool& recurse)
 {
     // TO DO: Proj2 raytracer
     // Computes mirror reflections
     //--------------------------------------------------------------------
     Lambertian(pIntersection, light, color); // apply shading using lambertian
-    //Phong(pScene, pIntersection, light, color);
+    //Phong(pScene, pIntersection, light, color); // apply shading using phong
+
+    // calculate reflect vector using view direction and surface normal
+    // Reference: Fundamentals of Computer Graphics, chapter 4
+    // Referece: powerpoint - "Ray Tracing Part 1."
     STVector3 r = 2 * STVector3::Dot(pIntersection->normal, pIntersection->viewDirection) * pIntersection->normal - pIntersection->viewDirection;
-    float strength = std::max(0.0f, STVector3::Dot(pIntersection->viewDirection, r));
+    r.Normalize();
+    float strength = 3 * std::max(0.0f, STVector3::Dot(pIntersection->normal, r));
+
+    STVector3 point = pIntersection->point;
+    point += (0.1f * r);
+
+    // initialize a ray from the intersection point toward the reflection to find an intersection
+    Ray ray;
+    ray.SetOrigin(point);
+    ray.SetDirection(r);
+
+    // check for intersection and recurse if found
     if (pIntersection->surface->IsReflective()) {
-        color->r /= level;
-        color->g /= level;
-        color->b /= level;
+        // divide the colors by the level as more reflection means more light/color loss
+        color->r *= strength / level;
+        color->g *= strength / level;
+        color->b *= strength / level;
+        recurse = pScene->FindIntersection(ray, pIntersection);
     }
-    color->r /= strength;
-    color->g /= strength;
-    color->b /= strength;
     //---------------------------------------------------------------------
 }
 
@@ -175,26 +202,34 @@ void Shader::MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* 
     // TO DO: Proj2 raytracer
     // Applies transparency
     //------------------------------------------------------------------------------
-    Intersection temp = *pIntersection;
+    Lambertian(pIntersection, light, color); // applies diffuse shading using lambertian
     RGBR_f backgroundC = pScene->GetBackgroundColor();
-    RGBR_f tempColor = *color;
-    if (temp.surface->IsTransparent()) {
-        float trans = temp.surface->GetTranspValue();
-        STVector3 rayDir = -1.0f * temp.viewDirection;
-        STVector3 point = temp.point;
-        point += (0.1f * rayDir);
+    if (pIntersection->surface->IsTransparent()) {
+        float trans = pIntersection->surface->GetTranspValue(); // transparent value of the surface. a float from 0.0-1.0.
+
+        // make a temporary ray and intersection. used to find a surface behind the current surface
+        Intersection temp = *pIntersection;
         Ray ray;
+        STVector3 rayDir = -1.0f * pIntersection->viewDirection;
+        STVector3 point = pIntersection->point;
+        point += (0.1f * rayDir); // offset the interstions so it doesn't intesect itself
         ray.SetOrigin(point);
         ray.SetDirection(rayDir);
         ray.Direction().Normalize();
-        if (pScene->FindIntersection(ray, &temp)) {
-            color->r = color->r * trans + temp.surface->GetColor().r * (1 - trans);
-            color->g = color->b * trans + temp.surface->GetColor().b * (1 - trans);
-            color->b = color->g * trans + temp.surface->GetColor().g * (1 - trans);
+
+        if (pScene->FindIntersection(ray, &temp)) { // if intersection is found, calculate color
+            RGBR_f tempColor = temp.surface->GetColor(); // make a temporary RGBR_f to get the color of the surface
+            MakeTransparent(pScene, &temp, light, &tempColor); // apply lambertian to the temporary color to get the correct values
+            // calculate the final color using the current surface color and the intersected surface color
+            color->r = color->r * (1.0f - trans) + tempColor.r * (trans);
+            color->g = color->b * (1.0f - trans) + tempColor.b * (trans);
+            color->b = color->g * (1.0f - trans) + tempColor.g * (trans);
         } else {
-            color->r = color->r * trans + backgroundC.r * (1 - trans);
-            color->g = color->b * trans + backgroundC.b * (1 - trans);
-            color->b = color->g * trans + backgroundC.g * (1 - trans);
+            // if no intersection
+            // calculate the final color using the current surface color and the background color
+            color->r = color->r * (1.0f - trans) + backgroundC.r * (trans);
+            color->g = color->b * (1.0f - trans) + backgroundC.b * (trans);
+            color->b = color->g * (1.0f - trans) + backgroundC.g * (trans);
             return;
         }
     }

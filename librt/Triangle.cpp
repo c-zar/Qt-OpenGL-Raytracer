@@ -41,7 +41,8 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool ref
     m_b = b;
     m_c = c;
     m_color = color;
-    reflective = reflective;
+    m_transparent = 0;
+    this->reflective = reflective;
     initVertexArray();
 }
 
@@ -90,6 +91,9 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
     // 2. If a solution is found return true, otherwise, return false
     // 3. If a solution is found, t, beta and gamma are updated; otherwise they are useless
     //------------------------------------------------
+
+    // store the values for the system of equations into variables
+    // makes it easier to organize
     float xE = ray.Origin().x;
     float yE = ray.Origin().y;
     float zE = ray.Origin().z;
@@ -109,6 +113,7 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
     float xC = C.x;
     float yC = C.y;
     float zC = C.z;
+
     /*
            Du + Ev + Fw + G = 0
            Hu + Iv + Jw + K = 0
@@ -117,6 +122,10 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
     double H, double I, double J, double K,
     double L, double M, double N, double P,
     double &u, double &v, double& w*/
+
+    // implemented a new method as the other ones don't seem to work
+    // reference: https://cplusplus.happycodings.com/mathematics/code5.html
+    // reference: Fundamentals of Computer Graphics
     if (L.Run_method3(
             xA - xB, xA - xC, xD, xE - xA,
             yA - yB, yA - yC, yD, yE - yA,
@@ -134,73 +143,18 @@ bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C
     return true;
 }
 
-//Method Working: http://www.lighthouse3d.com/tutorials/maths/ray-triangle-intersection/
-//bool Triangle::IntersectionSolver(Ray ray, STVector3 A, STVector3 B, STVector3 C,
-//    double& beta, double& gamma, double& t)
-//{
-//    STVector3 p = ray.Origin();
-//    STVector3 d = ray.Direction();
-//
-//    STVector3 v0 = this->m_a;
-//    STVector3 v1 = this->m_b;
-//    STVector3 v2 = this->m_c;
-//
-//    STVector3 e1 = v1 - v0;
-//    STVector3 e2 = v2 - v0;
-//
-//    STVector3 h = STVector3::Cross(d, e2);
-//    float a = STVector3::Dot(e1, h);
-//
-//    //since we're working with floating points, we're gonna have to round for 0
-//    if (a > -Tol && a < Tol)
-//        return (false);
-//
-//    float f = 1 / a;
-//    STVector3 s = (p - v0);
-//    float u = f * STVector3::Dot(s, h);
-//    if (u < 0.0f || u > 1.0f)
-//        return (false);
-//
-//    STVector3 q = STVector3::Cross(s, e1);
-//    float v = f * STVector3::Dot(d, q);
-//    if (v < 0.0f || u + v > 1.0f)
-//        return (false);
-//
-//    t = f * STVector3::Dot(e2, q);
-//    if (t > Tol) {
-//        return true;
-//    } else {
-//        return false;
-//    }
-//}
-
-//----------------------------------------------------------------------------
-// Compute the closest intersection point with the ray
-// If an intersection exist, return true; otherwise false
-// return the intersection point information in pIntersection
-//-----------------------------------------------------------------------------
 bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection)
 {
     bool bFound = false;
 
-    // TO DO: Proj2 raytracer
-    //          - Find Intersections.
-    // 1. Find intersections with this object along the Ray ray
-    //    Use barycentric coordinates and linear equations
-    // 2. Store the results of the intersection
-    // 3. If found return true, otherwise, return false
-    // NOTE: The Intersection pIntersection should store:
-    // hit point, surface normal, the time t of the ray at the hit point
-    // and the surface being hit
-    //------------------------------------------------------
-
-    //Method 2: using linearSolver and the book
     double beta = 0;
     double gamma = 0;
     double time = 0;
 
+    // call intersection solvor with triangle vertexes, beta, gamma, and time values
     if (IntersectionSolver(ray, this->m_a, this->m_b, this->m_c, beta, gamma, time)) {
 
+        // checkes to make sure solutions are accurate
         if (beta < 0.0)
             return false;
         if (gamma < 0.0)
@@ -208,6 +162,7 @@ bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection)
         if ((beta + gamma) > 1.0f)
             return false;
 
+        // set the values of pIntersection
         pIntersection->point = ray.Origin() + (time * ray.Direction());
         pIntersection->time = time;
         pIntersection->normal = ComputeNormalVector();
@@ -217,8 +172,7 @@ bool Triangle::FindIntersection(Ray ray, Intersection* pIntersection)
 
         bFound = true;
     }
-    ////------------------------------------------------------
-
+    //------------------------------------------------------
     return (bFound);
 }
 
@@ -230,11 +184,6 @@ STVector3 Triangle::ComputeNormalVector(void)
     STVector3 normal;
     STVector3 V = m_b - m_a;
     STVector3 W = m_c - m_a;
-    // TO DO: Proj2 raytracer
-    // - Compute the surface normal.
-    // 1. Compute the surface surface normal to the
-    // plane whose points are m_a, m_b, and m_c
-    //------------------------------------------------
 
     //takes the cross product of 2 vectors (sides of the triangle) to find the normal
     normal = STVector3::Cross(V, W);

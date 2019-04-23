@@ -4,42 +4,35 @@
 // Base class for all Surfaces
 //-------------------------------------------------------------------------------
 
-
 #include "Surface.h"
 #include <assert.h>
 #include <stdio.h>
 #include <string>
 
-
-
 Surface::Surface()
 {
 }
 
-
 Surface::~Surface()
 {
-
 }
 
 float Surface::GetTranspValue(void)
 {
-	return m_transparent;
+    return m_transparent;
 }
 
 bool Surface::IsTransparent(void)
 {
-	return (m_transparent != 0);
+    return (m_transparent != 0);
 }
 
 RGBR_f Surface::GetColor(void)
 {
-	return m_color;
+    return m_color;
 }
 
 bool Surface::IsReflective(void)
 {
     return reflective;
 }
-
-

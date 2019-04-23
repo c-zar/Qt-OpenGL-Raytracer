@@ -77,8 +77,8 @@ bool LinearSolver::Run_method2(double a, double b, double c, double d,
     return (isTrue);
 }
 
-//  from https://cplusplus.happycodings.com/mathematics/code5.html
-// the other linear solvers do not work properly
+// reference: https://cplusplus.happycodings.com/mathematics/code5.html
+// I could not get the other linear solvers to work
 bool LinearSolver::Run_method3(double a, double b, double c, double d,
     double l, double m, double n, double k,
     double p, double q, double r, double s,
