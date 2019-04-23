@@ -11,12 +11,15 @@ public:
     Render(QWidget *parent = Q_NULLPTR);
     ~Render();
 
+	void setReferences(int &renderMode, int &m_projectionType, bool &submitted);
+
+private slots:
+	void on_btnOK_clicked();
+
 private:
     Ui::Render ui;
 
-    bool* lambertian;
-    bool* phong;
-    bool* shadowns;
-    bool* transparency;
-    bool* reflection;
+	int *renderModePtr;
+	int *m_projectionTypePtr;
+	bool *submittedPtr;
 };

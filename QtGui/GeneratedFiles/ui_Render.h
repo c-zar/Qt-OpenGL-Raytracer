@@ -24,8 +24,8 @@ class Ui_Render
 {
 public:
     QGridLayout *gridLayout;
-    QComboBox *comboBox;
-    QComboBox *comboBox_2;
+    QComboBox *comboBoxProjectionType;
+    QComboBox *comboBoxRenderMode;
     QSpinBox *spinBoxHeight;
     QLabel *label_3;
     QLabel *label_2;
@@ -41,27 +41,27 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        comboBox = new QComboBox(Render);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        comboBoxProjectionType = new QComboBox(Render);
+        comboBoxProjectionType->addItem(QString());
+        comboBoxProjectionType->addItem(QString());
+        comboBoxProjectionType->setObjectName(QString::fromUtf8("comboBoxProjectionType"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy);
+        sizePolicy.setHeightForWidth(comboBoxProjectionType->sizePolicy().hasHeightForWidth());
+        comboBoxProjectionType->setSizePolicy(sizePolicy);
 
-        gridLayout->addWidget(comboBox, 3, 0, 1, 1);
+        gridLayout->addWidget(comboBoxProjectionType, 3, 0, 1, 1);
 
-        comboBox_2 = new QComboBox(Render);
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->addItem(QString());
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+        comboBoxRenderMode = new QComboBox(Render);
+        comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->setObjectName(QString::fromUtf8("comboBoxRenderMode"));
 
-        gridLayout->addWidget(comboBox_2, 1, 0, 1, 1);
+        gridLayout->addWidget(comboBoxRenderMode, 1, 0, 1, 1);
 
         spinBoxHeight = new QSpinBox(Render);
         spinBoxHeight->setObjectName(QString::fromUtf8("spinBoxHeight"));
@@ -116,14 +116,14 @@ public:
     void retranslateUi(QDialog *Render)
     {
         Render->setWindowTitle(QApplication::translate("Render", "Render", nullptr));
-        comboBox->setItemText(0, QApplication::translate("Render", "Perspective", nullptr));
-        comboBox->setItemText(1, QApplication::translate("Render", "Parallel", nullptr));
+        comboBoxProjectionType->setItemText(0, QApplication::translate("Render", "Perspective", nullptr));
+        comboBoxProjectionType->setItemText(1, QApplication::translate("Render", "Parallel", nullptr));
 
-        comboBox_2->setItemText(0, QApplication::translate("Render", "Lambertian", nullptr));
-        comboBox_2->setItemText(1, QApplication::translate("Render", "Phong", nullptr));
-        comboBox_2->setItemText(2, QApplication::translate("Render", "Shadows", nullptr));
-        comboBox_2->setItemText(3, QApplication::translate("Render", "Transparency", nullptr));
-        comboBox_2->setItemText(4, QApplication::translate("Render", "Refraction", nullptr));
+        comboBoxRenderMode->setItemText(0, QApplication::translate("Render", "Lambertian", nullptr));
+        comboBoxRenderMode->setItemText(1, QApplication::translate("Render", "Phong", nullptr));
+        comboBoxRenderMode->setItemText(2, QApplication::translate("Render", "Shadows", nullptr));
+        comboBoxRenderMode->setItemText(3, QApplication::translate("Render", "Transparency", nullptr));
+        comboBoxRenderMode->setItemText(4, QApplication::translate("Render", "Mirror", nullptr));
 
         label_3->setText(QApplication::translate("Render", "Width", nullptr));
         label_2->setText(QApplication::translate("Render", "Height", nullptr));
