@@ -41,7 +41,8 @@ Sphere::Sphere(float x, float y, float z, RGBR_f color, float radius,
     m_center = STVector3(x, y, z);
     m_color = color;
     m_radius = radius;
-    reflective = reflective;
+    this->reflective = reflective;
+    m_transparent = 0;
     initVertexArray();
 }
 
@@ -73,20 +74,16 @@ bool Sphere::FindIntersection(Ray ray, Intersection* pIntersection)
     // and the surface being hit
     //------------------------------------------------
 
-    // Method 1: From the textbook
-    // First step: find discriminant
-    STVector3 rDir = ray.Direction();
-    STVector3 rOrigin = ray.Origin();
-    STVector3 sCenter = this->m_center;
-    float sRad = this->m_radius;
+    // Reference: Fundamentals of Computer Graphics, chapter 4
+    // Reference: powerpoint - "Ray Tracing Part 1."
 
-    //vector from ray origin to sphere center
-    STVector3 V = rOrigin - sCenter;
+    STVector3 V = ray.Origin() - this->m_center; //vector from ray origin to sphere center
 
-    //ray directions should be normlized so A = Dot(d,d) = 1
-    float A = STVector3::Dot(rDir, rDir);
-    float B = STVector3::Dot(rDir, V);
-    float C = (STVector3::Dot(V, V)) - (sRad * sRad);
+    // get the values of A,B,C from quadratic equation
+    // use values to find discriminant//Find discriminant
+    float A = STVector3::Dot(ray.Direction(), ray.Direction());
+    float B = STVector3::Dot(ray.Direction(), V);
+    float C = (STVector3::Dot(V, V)) - (this->m_radius * this->m_radius);
     float Discriminant = (B * B) - (A * C);
 
     //If the discriminant is negative, there's no intersection
@@ -97,6 +94,8 @@ bool Sphere::FindIntersection(Ray ray, Intersection* pIntersection)
     float t1 = (-B + sqrtf(Discriminant)) / (A);
     float t2 = (-B - sqrtf(Discriminant)) / (A);
 
+    // find the smallest positive time value
+    // used EPSILON as 0
     float time;
     if (t1 < t2 && t1 > EPSILON) {
         time = t1;
@@ -106,16 +105,17 @@ bool Sphere::FindIntersection(Ray ray, Intersection* pIntersection)
         return false;
     }
 
-    STVector3 iPoint = rOrigin + (time * rDir);
-    STVector3 normal = (iPoint - sCenter);
-    normal.Normalize();
+    STVector3 iPoint = ray.Origin() + (time * ray.Direction()); // calculate the intersection point using the time
+    STVector3 normal = (iPoint - this->m_center); // calculate the normal using the intersection point the and center of the sphere
+    normal.Normalize(); // normalize normal
 
+    // set the values of the pIntersection
     pIntersection->point = iPoint;
     pIntersection->normal = normal;
     pIntersection->time = time;
     pIntersection->surface = this;
-    pIntersection->viewDirection = ray.Origin() - iPoint;
-    pIntersection->viewDirection.Normalize();
+    pIntersection->viewDirection = ray.Origin() - iPoint; // get viewDirection form using intersection point and ray origin
+    pIntersection->viewDirection.Normalize(); // normalize view direction
 
     bFound = true;
 

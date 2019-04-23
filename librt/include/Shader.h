@@ -29,7 +29,7 @@ public:
     ~Shader(void);
 
     void SetMode(RenderMode mode);
-    void Run(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color);
+    void Run(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color, bool& recurse);
 
     void addAmbientLight(Intersection* pIntersection, RGBR_f* color);
 
@@ -39,7 +39,7 @@ private:
     void Lambertian(Intersection* pIntersection, Light* light, RGBR_f* color);
     void Phong(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
     void ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
-    void MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color);
+    void MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color, bool& recurse);
     void MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
 };
 

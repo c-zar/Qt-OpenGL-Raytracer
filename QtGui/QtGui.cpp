@@ -165,7 +165,7 @@ void QtGui::renderRayTracing()
     pScene->SetBackgroundColor(RGBR_f(0, 0, 0, 1.0f));
 
     //Lights -------------------------------------------------------------------------------------------------------
-    Light scenelight = Light(STVector3(0, 50, 10), RGBR_f(255, 255, 255, 0.7f), "Light1");
+    Light scenelight = Light(STVector3(0, 50, 10), RGBR_f(255, 255, 255, 20), "Light1");
     pScene->AddLight(scenelight);
     //Lights -------------------------------------------------------------------------------------------------------
 
@@ -194,7 +194,7 @@ void QtGui::renderRayTracing()
     //Render* renderPage = new Render();
     //renderPage->exec();
 
-    RenderMode mode = LAMBERTIAN;
+    RenderMode mode = MIRROR;
     ProjectionType m_projectionType = PERSPECTIVE;
 
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);
