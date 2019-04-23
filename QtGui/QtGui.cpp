@@ -189,16 +189,59 @@ void QtGui::renderRayTracing()
     // init a ray tracer object
     RayTracer* pRayTracer = new RayTracer();
 
-    //run ray tracing
+	int int_mode = -1;
+	int int_proj = -1;
+	bool submitted = false;
 
-    //Render* renderPage = new Render();
-    //renderPage->exec();
+    Render* renderPage = new Render();
+	renderPage->setReferences(int_mode, int_proj, submitted);
+    renderPage->exec();
 
-    RenderMode mode = MIRROR;
-    ProjectionType m_projectionType = PERSPECTIVE;
+	if (!submitted) {
+		return;
+	}
 
+	RenderMode mode;
+	switch (int_mode) {
+	case 0:
+		mode = LAMBERTIAN;
+		break;
+	case 1:
+		mode = PHONG;
+		break;
+	case 2:
+		mode = SHADOWS;
+		break;
+	case 3:
+		mode = TRANSPARENCY;
+		break;
+	case 4:
+		mode = MIRROR;
+		break;
+	default:
+		mode = LAMBERTIAN;
+		break;
+	}
+
+	ProjectionType m_projectionType;
+	switch (int_proj) {
+	case 0:
+		m_projectionType = PERSPECTIVE;
+		break;
+	case 1:
+		m_projectionType = PARALLEL;
+		break;
+	default:
+		m_projectionType = PERSPECTIVE;
+		break;
+	}
+
+	//run ray tracing
+	QString test = QString::number(int_mode) + " " + QString::number(int_proj);
+	ui->btnAddShape->setText(test);
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);
 
+	//open image after
 	Show_Image* page = new Show_Image();
 	page->exec();
 }
