@@ -5,6 +5,7 @@
 // Then sample your cube map and update the fragment color.
 //Be sure to pass in the correct variables and set your out variables
 //-----------------------------------------------------------------------
+//in vec4 inColor;
 out vec4 outColor;
 
 

@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
+    <width>956</width>
     <height>690</height>
    </rect>
   </property>
@@ -317,22 +317,5 @@
  <resources>
   <include location="QtGui.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>camLookX</sender>
-   <signal>valueChanged(QString)</signal>
-   <receiver>QtGuiClass</receiver>
-   <slot>update()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>115</x>
-     <y>576</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>449</x>
-     <y>344</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

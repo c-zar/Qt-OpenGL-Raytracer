@@ -58,7 +58,7 @@ public:
         if (QtGuiClass->objectName().isEmpty())
             QtGuiClass->setObjectName(QString::fromUtf8("QtGuiClass"));
         QtGuiClass->setWindowModality(Qt::NonModal);
-        QtGuiClass->resize(900, 690);
+        QtGuiClass->resize(956, 690);
         centralWidget = new QWidget(QtGuiClass);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -252,7 +252,6 @@ public:
         QtGuiClass->setCentralWidget(centralWidget);
 
         retranslateUi(QtGuiClass);
-        QObject::connect(camLookX, SIGNAL(valueChanged(QString)), QtGuiClass, SLOT(update()));
 
         QMetaObject::connectSlotsByName(QtGuiClass);
     } // setupUi

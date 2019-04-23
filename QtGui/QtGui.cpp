@@ -21,7 +21,7 @@ QtGui::QtGui(QWidget* parent)
     pScene = new Scene();
     sceneCam = pScene->GetCamera();
 
-    sphereList.push_back(Sphere(0, .1, 15, RGBR_f(0, 0, 255, 1), 2, true));
+    sphereList.push_back(Sphere(0, .1, 15, RGBR_f(0, 0, 255, 1), 2, false));
     STVector3 a(10, -2, 0);
     STVector3 b(-10, -2, 0);
     STVector3 c(0, -2, 100);
@@ -194,7 +194,7 @@ void QtGui::renderRayTracing()
     //Render* renderPage = new Render();
     //renderPage->exec();
 
-    RenderMode mode = MIRROR;
+    RenderMode mode = SHADOWS;
     ProjectionType m_projectionType = PERSPECTIVE;
 
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);

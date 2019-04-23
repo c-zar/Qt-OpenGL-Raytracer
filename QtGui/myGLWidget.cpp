@@ -125,7 +125,7 @@ void myGLWidget::initializeGL()
     //glEnableVertexAttribArray(0);
     //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
-    ////VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
+    //VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
 
     //VAO->release();
     //VBO->release();
@@ -141,15 +141,9 @@ void myGLWidget::test()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //shaderProgram->bind();
 
-    //for (auto it = triangleVAOs.begin(); it != triangleVAOs.end(); it++) {
-    //    (*it)->bind();
-    //    glDrawArrays(GL_TRIANGLES, 0, 3);
-    //    (*it)->release();
-    //}
-
     for (auto it = triangleList->begin(); it != triangleList->end(); it++) {
-        glMatrixMode(GL_MODELVIEW);
-        glPushMatrix();
+        //glMatrixMode(GL_MODELVIEW);
+        //glPushMatrix();
         RGBR_f color = (*it).GetColor();
         glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
         glEnableClientState(GL_VERTEX_ARRAY);
@@ -209,7 +203,6 @@ void myGLWidget::resizeGL(int w, int h)
     int halfW = w / 2;
     int halfh = h / 2;
 
-
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -217,5 +210,6 @@ void myGLWidget::resizeGL(int w, int h)
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    gluLookAt(camLookAt.x, camLookAt.y, camLookAt.z, camPos.x / halfW, camPos.y / halfh, camPos.z, camUp.x, camUp.y, camUp.z);
+    glTranslatef(camPos.x, camPos.y, camPos.z);
+    gluLookAt(camLookAt.x, camLookAt.y, camLookAt.z, 0, 0, 0, camUp.x, camUp.y, camUp.z);
 }
