@@ -6,6 +6,7 @@
 #include "Triangle.h"
 #include "defs.h"
 //#include "stglew.h"
+#include "Show_Image.h"
 #include <map>
 #include <stdio.h>
 #include <string.h>
@@ -197,4 +198,7 @@ void QtGui::renderRayTracing()
     ProjectionType m_projectionType = PERSPECTIVE;
 
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);
+
+	Show_Image* page = new Show_Image();
+	page->exec();
 }
