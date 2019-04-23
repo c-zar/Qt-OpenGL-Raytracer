@@ -1,4 +1,8 @@
 #include "myGLWidget.h"
+#include <QMatrix4x4>
+#include <glm.hpp>
+#include <gtc/matrix_transform.hpp>
+#include <gtc/type_ptr.hpp>
 
 static float testVerts[] = { 0, -0.5, 0,
     0.5, -0.5, 0,
@@ -66,32 +70,32 @@ void myGLWidget::addNewTriangle()
 
 void myGLWidget::addNewSphere()
 {
-    //Sphere* newSphere = &sphereList->back();
+    Sphere* newSphere = &sphereList->back();
 
-    //makeCurrent();
-    //shaderProgram->bind();
-    //QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
-    //QOpenGLBuffer* VBO = new QOpenGLBuffer();
+    makeCurrent();
+    shaderProgram->bind();
+    QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
+    QOpenGLBuffer* VBO = new QOpenGLBuffer();
 
-    //VAO->create();
-    //VAO->bind();
+    VAO->create();
+    VAO->bind();
 
-    //VBO->create();
-    //VBO->bind();
-    //VBO->allocate(&newSphere->vertexArray[0], 9 * sizeof(float));
+    VBO->create();
+    VBO->bind();
+    VBO->allocate(&newSphere->vertices[0], 9 * sizeof(float));
 
-    ////VBO.bind();
-    //glEnableVertexAttribArray(0);
-    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+    //VBO.bind();
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 
-    ////VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
+    //VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
 
-    //VAO->release();
-    //VBO->release();
+    VAO->release();
+    VBO->release();
 
-    //triangleVAOs.push_back(VAO);
-    //triangleVBOs.push_back(VBO);
-    //shaderProgram->release();
+    triangleVAOs.push_back(VAO);
+    triangleVBOs.push_back(VBO);
+    shaderProgram->release();
 }
 
 void myGLWidget::initializeGL()
@@ -111,41 +115,40 @@ void myGLWidget::initializeGL()
     shaderProgram->link();
     shaderProgram->bind();
 
-    //QOpenGLVertexArrayObject* VAO = new QOpenGLVertexArrayObject();
-    //QOpenGLBuffer* VBO = new QOpenGLBuffer();
-
-    //VAO->create();
-    //VAO->bind();
-
-    //VBO->create();
-    //VBO->bind();
-    //VBO->allocate(testVerts, 9 * sizeof(float));
-
-    ////VBO.bind();
-    //glEnableVertexAttribArray(0);
-    //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-
-    //VBO.setUsagePattern(QOpenGLBuffer::StaticDraw);
-
-    //VAO->release();
-    //VBO->release();
-
-    //triangleVAOs.push_back(VAO);
-    //triangleVBOs.push_back(VBO);
-
     shaderProgram->release();
 }
 
 void myGLWidget::test()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //shaderProgram->bind();
+    shaderProgram->bind();
+
+    QMatrix4x4 view;
+    view.lookAt(QVector3D(camLookAt.x, camLookAt.y, camLookAt.z), QVector3D(0.0f, 0.0f, 0.0f), QVector3D(camUp.x, camUp.y, camUp.z));
+    view.translate(QVector3D(-camPos.x, -camPos.y, -camPos.z));
+    shaderProgram->setUniformValue("view", view);
+
+    QMatrix4x4 perspective;
+    perspective.perspective(45.0f, ratio, 0.1f, 100.0f);
+    shaderProgram->setUniformValue("projection", perspective);
+
+    update();
 
     for (auto it = triangleList->begin(); it != triangleList->end(); it++) {
         //glMatrixMode(GL_MODELVIEW);
         //glPushMatrix();
+
+        QMatrix4x4 model;
+        model.setToIdentity();
+        shaderProgram->setUniformValue("model", model);
+
         RGBR_f color = (*it).GetColor();
-        glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
+        QColor c = QColor(color.r, color.g, color.b);
+        shaderProgram->setUniformValue("color", c);
+
+        //glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
+
+
         glEnableClientState(GL_VERTEX_ARRAY);
         glVertexPointer(3, GL_FLOAT, 0, &(*it).vertexArray[0]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
@@ -163,33 +166,49 @@ void myGLWidget::test()
     //}
 
     for (auto it = sphereList->begin(); it != sphereList->end(); it++) {
-        glMatrixMode(GL_MODELVIEW);
-        glPushMatrix();
-        RGBR_f color = (*it).GetColor();
-        glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
-
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glEnableClientState(GL_NORMAL_ARRAY);
-
-        glVertexPointer(3, GL_FLOAT, 0, &(*it).vertices[0]);
-        glNormalPointer(GL_FLOAT, 0, &(*it).normals[0]);
+        //glMatrixMode(GL_MODELVIEW);
+        //glPushMatrix();
 
         STVector3 spherePos = (*it).getPos();
-        glTranslatef(spherePos.x, spherePos.y, spherePos.z);
+        //glTranslatef(spherePos.x, spherePos.y, spherePos.z);
+
+        QMatrix4x4 model;
+        model.translate(QVector3D(spherePos.x, spherePos.y, spherePos.z));
+        shaderProgram->setUniformValue("model", model);
+
+        RGBR_f color = (*it).GetColor();
+        QColor c = QColor(color.r, color.g, color.b);
+        shaderProgram->setUniformValue("color", c);
+
+        //glColor3f(color.r / 255.f, color.g / 255.f, color.b / 255.f);
+
+        glEnableClientState(GL_VERTEX_ARRAY);
+        //glEnableClientState(GL_NORMAL_ARRAY);
+
+        glVertexPointer(3, GL_FLOAT, 0, &(*it).vertices[0]);
+        //glNormalPointer(GL_FLOAT, 0, &(*it).normals[0]);
 
         glDrawElements(GL_TRIANGLES, (*it).indices.size(), GL_UNSIGNED_INT, &(*it).indices[0]);
 
-        glDisableClientState(GL_VERTEX_ARRAY);
-        glDisableClientState(GL_NORMAL_ARRAY);
+        //glDisableClientState(GL_VERTEX_ARRAY);
+        //glDisableClientState(GL_NORMAL_ARRAY);
 
-        glPopMatrix();
+        //glPopMatrix();
     }
 
-    //shaderProgram->release();
+    shaderProgram->release();
 }
 
 void myGLWidget::paintGL()
 {
+    ratio = (float)*width / (float)*height;
+
+    camPos = sceneCamera->Position();
+    camLookAt = sceneCamera->LookAt();
+    camUp = sceneCamera->Up();
+
+    glViewport(0, 0, *width, *height);
+
     test();
 }
 
@@ -197,19 +216,13 @@ void myGLWidget::resizeGL(int w, int h)
 {
     *width = w;
     *height = h;
-    STVector3 camPos = sceneCamera->Position();
-    STVector3 camLookAt = sceneCamera->LookAt();
-    STVector3 camUp = sceneCamera->Up();
-    int halfW = w / 2;
-    int halfh = h / 2;
 
-    glViewport(0, 0, w, h);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45, (float)w / (float)h, 0.001, 1000);
+    //glMatrixMode(GL_PROJECTION);
+    //glLoadIdentity();
+    //gluPerspective(45, (float)w / (float)h, 0.001, 1000);
 
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(camPos.x, camPos.y, camPos.z);
-    gluLookAt(camLookAt.x, camLookAt.y, camLookAt.z, 0, 0, 0, camUp.x, camUp.y, camUp.z);
+    //glMatrixMode(GL_MODELVIEW);
+    //glLoadIdentity();
+    //glTranslatef(camPos.x, camPos.y, camPos.z);
+    //gluLookAt(camLookAt.x, camLookAt.y, camLookAt.z, 0, 0, 0, camUp.x, camUp.y, camUp.z);
 }

@@ -45,6 +45,11 @@ public:
     Camera* sceneCamera;
     int* width;
     int* height;
+    float ratio;
+
+    STVector3 camPos;
+    STVector3 camLookAt;
+    STVector3 camUp;
 
     QOpenGLContext* context;
     QOpenGLShaderProgram* shaderProgram;

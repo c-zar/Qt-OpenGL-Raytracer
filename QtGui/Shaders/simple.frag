@@ -6,12 +6,13 @@
 //Be sure to pass in the correct variables and set your out variables
 //-----------------------------------------------------------------------
 //in vec4 inColor;
+uniform vec4 color;
 out vec4 outColor;
 
 
 void main()
 {
-    outColor  = vec4(1.0f,1.0f,1.0f,1.0f);
+    outColor  =  color;
 }
 
 //-----------------------------------------------------------------------

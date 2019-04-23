@@ -18,7 +18,7 @@ Sphere::Sphere(float x, float y, float z, RGBR_f color, float radius)
     m_color = color;
     m_radius = radius;
     m_transparent = 0;
-    reflective = false;
+    this->reflective = false;
     initVertexArray();
 }
 
@@ -30,7 +30,7 @@ Sphere::Sphere(float x, float y, float z, RGBR_f color, float radius,
     m_color = color;
     m_radius = radius;
     m_transparent = transparent;
-    reflective = false;
+    this->reflective = false;
     initVertexArray();
 }
 
@@ -41,8 +41,8 @@ Sphere::Sphere(float x, float y, float z, RGBR_f color, float radius,
     m_center = STVector3(x, y, z);
     m_color = color;
     m_radius = radius;
-    this->reflective = reflective;
     m_transparent = 0;
+    this->reflective = reflective;
     initVertexArray();
 }
 

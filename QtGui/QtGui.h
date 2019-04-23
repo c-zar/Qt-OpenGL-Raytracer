@@ -4,9 +4,9 @@
 #include "Create_Light.h"
 #include "Create_Sphere.h"
 #include "Create_Triangle.h"
-#include "Render.h"
 #include "Light.h"
 #include "RayTracer.h"
+#include "Render.h"
 #include "Scene.h"
 #include "Sphere.h"
 #include "Triangle.h"
@@ -25,7 +25,18 @@ public:
 private slots:
     void on_btnAddShape_clicked();
     void on_btnRender_clicked();
+
     void on_camPosX_valueChanged(double newVal);
+    void on_camPosY_valueChanged(double newVal);
+    void on_camPosZ_valueChanged(double newVal);
+
+    void on_camLookX_valueChanged(double newVal);
+    void on_camLookY_valueChanged(double newVal);
+    void on_camLookZ_valueChanged(double newVal);
+
+    void on_camUpX_valueChanged(double newVal);
+    void on_camUpY_valueChanged(double newVal);
+    void on_camUpZ_valueChanged(double newVal);
 
 private:
     Ui::QtGuiClass* ui;

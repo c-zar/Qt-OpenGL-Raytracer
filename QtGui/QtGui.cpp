@@ -5,7 +5,6 @@
 #include "Sphere.h"
 #include "Triangle.h"
 #include "defs.h"
-//#include "stglew.h"
 #include "Show_Image.h"
 #include <map>
 #include <stdio.h>
@@ -21,7 +20,7 @@ QtGui::QtGui(QWidget* parent)
     pScene = new Scene();
     sceneCam = pScene->GetCamera();
 
-    sphereList.push_back(Sphere(0, .1, 15, RGBR_f(0, 0, 255, 1), 2, true));
+    sphereList.push_back(Sphere(0, .1, 15, RGBR_f(0, 0, 255, 1), 2));
     STVector3 a(10, -2, 0);
     STVector3 b(-10, -2, 0);
     STVector3 c(0, -2, 100);
@@ -73,6 +72,69 @@ void QtGui::on_camPosX_valueChanged(double newVal)
 {
     STVector3 old = sceneCam->Position();
     sceneCam->SetPostion(STVector3(newVal, old.y, old.z));
+}
+
+void QtGui::on_camPosY_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->Position();
+    sceneCam->SetPostion(STVector3(old.x, newVal, old.z));
+}
+
+void QtGui::on_camPosZ_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->Position();
+    sceneCam->SetPostion(STVector3(old.x, old.y, newVal));
+}
+
+void QtGui::on_camLookX_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->LookAt();
+    STVector3 newL(newVal, old.y, old.z);
+    newL.Normalize();
+    STVector3 up = sceneCam->Up();
+    sceneCam->SetLookAt(newL, up);
+}
+
+void QtGui::on_camLookY_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->LookAt();
+    STVector3 newL(old.x, newVal, old.z);
+    newL.Normalize();
+    STVector3 up = sceneCam->Up();
+    sceneCam->SetLookAt(newL, up);
+}
+
+void QtGui::on_camLookZ_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->LookAt();
+    STVector3 newL(old.x, old.y, newVal);
+    newL.Normalize();
+    STVector3 up = sceneCam->Up();
+    sceneCam->SetLookAt(newL, up);
+}
+
+void QtGui::on_camUpX_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->Up();
+    STVector3 newU(newVal, old.y, old.z);
+    STVector3 lookat = sceneCam->LookAt();
+    sceneCam->SetLookAt(lookat, newU);
+}
+
+void QtGui::on_camUpY_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->Up();
+    STVector3 newU(old.x, newVal, old.z);
+    STVector3 lookat = sceneCam->LookAt();
+    sceneCam->SetLookAt(lookat, newU);
+}
+
+void QtGui::on_camUpZ_valueChanged(double newVal)
+{
+    STVector3 old = sceneCam->Up();
+    STVector3 newU(old.x, old.y, newVal);
+    STVector3 lookat = sceneCam->LookAt();
+    sceneCam->SetLookAt(lookat, newU);
 }
 
 void QtGui::openCreateSpherePage(STVector3& center, float& radius, QColor& color)
@@ -189,59 +251,59 @@ void QtGui::renderRayTracing()
     // init a ray tracer object
     RayTracer* pRayTracer = new RayTracer();
 
-	int int_mode = -1;
-	int int_proj = -1;
-	bool submitted = false;
+    int int_mode = -1;
+    int int_proj = -1;
+    bool submitted = false;
 
     Render* renderPage = new Render();
-	renderPage->setReferences(int_mode, int_proj, submitted);
+    renderPage->setReferences(int_mode, int_proj, submitted);
     renderPage->exec();
 
-	if (!submitted) {
-		return;
-	}
+    if (!submitted) {
+        return;
+    }
 
-	RenderMode mode;
-	switch (int_mode) {
-	case 0:
-		mode = LAMBERTIAN;
-		break;
-	case 1:
-		mode = PHONG;
-		break;
-	case 2:
-		mode = SHADOWS;
-		break;
-	case 3:
-		mode = TRANSPARENCY;
-		break;
-	case 4:
-		mode = MIRROR;
-		break;
-	default:
-		mode = LAMBERTIAN;
-		break;
-	}
+    RenderMode mode;
+    switch (int_mode) {
+    case 0:
+        mode = LAMBERTIAN;
+        break;
+    case 1:
+        mode = PHONG;
+        break;
+    case 2:
+        mode = SHADOWS;
+        break;
+    case 3:
+        mode = TRANSPARENCY;
+        break;
+    case 4:
+        mode = MIRROR;
+        break;
+    default:
+        mode = LAMBERTIAN;
+        break;
+    }
 
-	ProjectionType m_projectionType;
-	switch (int_proj) {
-	case 0:
-		m_projectionType = PERSPECTIVE;
-		break;
-	case 1:
-		m_projectionType = PARALLEL;
-		break;
-	default:
-		m_projectionType = PERSPECTIVE;
-		break;
-	}
+    ProjectionType m_projectionType;
+    switch (int_proj) {
+    case 0:
+        m_projectionType = PERSPECTIVE;
+        break;
+    case 1:
+        m_projectionType = PARALLEL;
+        break;
+    default:
+        m_projectionType = PERSPECTIVE;
+        break;
+    }
 
-	//run ray tracing
-	QString test = QString::number(int_mode) + " " + QString::number(int_proj);
-	ui->btnAddShape->setText(test);
+    //run ray tracing
+    QString test = QString::number(int_mode) + " " + QString::number(int_proj);
+    ui->btnAddShape->setText(test);
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);
 
-	//open image after
-	Show_Image* page = new Show_Image();
-	page->exec();
+    //open image after
+    Show_Image* page = new Show_Image();
+    page->exec();
 }

@@ -186,7 +186,7 @@ void Shader::MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* lig
     ray.SetDirection(r);
 
     // check for intersection and recurse if found
-    if (pIntersection->surface->IsReflective()) {
+    if (m_mode == MIRROR && pIntersection->surface->IsReflective()) {
         // divide the colors by the level as more reflection means more light/color loss
         color->r *= strength / level;
         color->g *= strength / level;

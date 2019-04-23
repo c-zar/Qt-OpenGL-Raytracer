@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QtGui_t {
-    QByteArrayData data[6];
-    char stringdata0[82];
+    QByteArrayData data[14];
+    char stringdata0[274];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,12 +36,26 @@ QT_MOC_LITERAL(1, 6, 22), // "on_btnAddShape_clicked"
 QT_MOC_LITERAL(2, 29, 0), // ""
 QT_MOC_LITERAL(3, 30, 20), // "on_btnRender_clicked"
 QT_MOC_LITERAL(4, 51, 23), // "on_camPosX_valueChanged"
-QT_MOC_LITERAL(5, 75, 6) // "newVal"
+QT_MOC_LITERAL(5, 75, 6), // "newVal"
+QT_MOC_LITERAL(6, 82, 23), // "on_camPosY_valueChanged"
+QT_MOC_LITERAL(7, 106, 23), // "on_camPosZ_valueChanged"
+QT_MOC_LITERAL(8, 130, 24), // "on_camLookX_valueChanged"
+QT_MOC_LITERAL(9, 155, 24), // "on_camLookY_valueChanged"
+QT_MOC_LITERAL(10, 180, 24), // "on_camLookZ_valueChanged"
+QT_MOC_LITERAL(11, 205, 22), // "on_camUpX_valueChanged"
+QT_MOC_LITERAL(12, 228, 22), // "on_camUpY_valueChanged"
+QT_MOC_LITERAL(13, 251, 22) // "on_camUpZ_valueChanged"
 
     },
     "QtGui\0on_btnAddShape_clicked\0\0"
     "on_btnRender_clicked\0on_camPosX_valueChanged\0"
-    "newVal"
+    "newVal\0on_camPosY_valueChanged\0"
+    "on_camPosZ_valueChanged\0"
+    "on_camLookX_valueChanged\0"
+    "on_camLookY_valueChanged\0"
+    "on_camLookZ_valueChanged\0"
+    "on_camUpX_valueChanged\0on_camUpY_valueChanged\0"
+    "on_camUpZ_valueChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +65,7 @@ static const uint qt_meta_data_QtGui[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,13 +73,29 @@ static const uint qt_meta_data_QtGui[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08 /* Private */,
-       3,    0,   30,    2, 0x08 /* Private */,
-       4,    1,   31,    2, 0x08 /* Private */,
+       1,    0,   69,    2, 0x08 /* Private */,
+       3,    0,   70,    2, 0x08 /* Private */,
+       4,    1,   71,    2, 0x08 /* Private */,
+       6,    1,   74,    2, 0x08 /* Private */,
+       7,    1,   77,    2, 0x08 /* Private */,
+       8,    1,   80,    2, 0x08 /* Private */,
+       9,    1,   83,    2, 0x08 /* Private */,
+      10,    1,   86,    2, 0x08 /* Private */,
+      11,    1,   89,    2, 0x08 /* Private */,
+      12,    1,   92,    2, 0x08 /* Private */,
+      13,    1,   95,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
+    QMetaType::Void, QMetaType::Double,    5,
     QMetaType::Void, QMetaType::Double,    5,
 
        0        // eod
@@ -80,6 +110,14 @@ void QtGui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         case 0: _t->on_btnAddShape_clicked(); break;
         case 1: _t->on_btnRender_clicked(); break;
         case 2: _t->on_camPosX_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 3: _t->on_camPosY_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 4: _t->on_camPosZ_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 5: _t->on_camLookX_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 6: _t->on_camLookY_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 7: _t->on_camLookZ_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 8: _t->on_camUpX_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 9: _t->on_camUpY_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
+        case 10: _t->on_camUpZ_valueChanged((*reinterpret_cast< double(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -114,13 +152,13 @@ int QtGui::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
+        _id -= 11;
     }
     return _id;
 }

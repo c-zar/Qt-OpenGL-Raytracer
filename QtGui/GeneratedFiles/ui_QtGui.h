@@ -144,6 +144,7 @@ public:
         camLookX->setObjectName(QString::fromUtf8("camLookX"));
         camLookX->setMinimum(-1000.000000000000000);
         camLookX->setMaximum(1000.000000000000000);
+        camLookX->setSingleStep(0.100000000000000);
 
         gridLayout_3->addWidget(camLookX, 5, 1, 1, 1);
 
@@ -151,6 +152,7 @@ public:
         camUpZ->setObjectName(QString::fromUtf8("camUpZ"));
         camUpZ->setMinimum(-1000.000000000000000);
         camUpZ->setMaximum(1000.000000000000000);
+        camUpZ->setSingleStep(0.100000000000000);
         camUpZ->setValue(0.000000000000000);
 
         gridLayout_3->addWidget(camUpZ, 6, 3, 1, 1);
@@ -166,6 +168,7 @@ public:
         camUpX->setObjectName(QString::fromUtf8("camUpX"));
         camUpX->setMinimum(-1000.000000000000000);
         camUpX->setMaximum(1000.000000000000000);
+        camUpX->setSingleStep(0.100000000000000);
 
         gridLayout_3->addWidget(camUpX, 6, 1, 1, 1);
 
@@ -173,6 +176,7 @@ public:
         camUpY->setObjectName(QString::fromUtf8("camUpY"));
         camUpY->setMinimum(-1000.000000000000000);
         camUpY->setMaximum(1000.000000000000000);
+        camUpY->setSingleStep(0.100000000000000);
         camUpY->setValue(1.000000000000000);
 
         gridLayout_3->addWidget(camUpY, 6, 2, 1, 1);
@@ -181,6 +185,7 @@ public:
         camLookY->setObjectName(QString::fromUtf8("camLookY"));
         camLookY->setMinimum(-1000.000000000000000);
         camLookY->setMaximum(1000.000000000000000);
+        camLookY->setSingleStep(0.100000000000000);
 
         gridLayout_3->addWidget(camLookY, 5, 2, 1, 1);
 
@@ -188,6 +193,7 @@ public:
         camLookZ->setObjectName(QString::fromUtf8("camLookZ"));
         camLookZ->setMinimum(-1000.000000000000000);
         camLookZ->setMaximum(1000.000000000000000);
+        camLookZ->setSingleStep(0.100000000000000);
         camLookZ->setValue(-1.000000000000000);
 
         gridLayout_3->addWidget(camLookZ, 5, 3, 1, 1);
