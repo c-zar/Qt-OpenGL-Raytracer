@@ -19,7 +19,9 @@ typedef enum {
     MIRROR = 3,
     SHADOWS = 4,
     TRANSPARENCY = 5,
-    EFFECT_3 = 6
+    EFFECT_3 = 6,
+    REFRACT = 7
+
 } RenderMode;
 
 // projection type

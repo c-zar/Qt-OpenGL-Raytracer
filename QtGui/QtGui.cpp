@@ -20,11 +20,17 @@ QtGui::QtGui(QWidget* parent)
     pScene = new Scene();
     sceneCam = pScene->GetCamera();
 
-    sphereList.push_back(Sphere(0, .1, 15, RGBR_f(0, 0, 255, 1), 2));
-    STVector3 a(10, -2, 0);
-    STVector3 b(-10, -2, 0);
+    sphereList.push_back(Sphere(0, .1, 20, RGBR_f(0, 0, 255, 1), 2, false));
+
+    STVector3 a(50, -2, 0);
+    STVector3 b(-50, -2, 0);
     STVector3 c(0, -2, 100);
-    triangleList.push_back(Triangle(a, b, c, RGBR_f(255, 0, 0, 1), true));
+    triangleList.push_back(Triangle(a, b, c, RGBR_f(255, 0, 0, 1), false));
+
+    STVector3 a2(10, -2, 20);
+    STVector3 b2(-10, -2, 0);
+    STVector3 c2(-10, 20, 0);
+    triangleList.push_back(Triangle(a2, c2, b2, RGBR_f(0, 255, 0, 1), true));
 
     ui->openGLWidget->setReferences(sphereList, triangleList, cylinderList, lightList, sceneCam, width, height);
 }
@@ -228,7 +234,10 @@ void QtGui::renderRayTracing()
 
     //Lights -------------------------------------------------------------------------------------------------------
     Light scenelight = Light(STVector3(0, 50, 10), RGBR_f(255, 255, 255, 20), "Light1");
+    Light scenelight2 = Light(STVector3(0, 0, 0), RGBR_f(255, 255, 255, 1), "Light2");
+    
     pScene->AddLight(scenelight);
+    pScene->AddLight(scenelight2);
     //Lights -------------------------------------------------------------------------------------------------------
 
     //Surfaces -------------------------------------------------------------------------------------------------------
@@ -266,7 +275,7 @@ void QtGui::renderRayTracing()
     RenderMode mode;
     switch (int_mode) {
     case 0:
-        mode = LAMBERTIAN;
+        mode = REFRACT;
         break;
     case 1:
         mode = PHONG;

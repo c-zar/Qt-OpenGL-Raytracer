@@ -43,6 +43,9 @@ void Shader::Run(Scene* pScene, Intersection* pIntersection, Light* light, int l
     case TRANSPARENCY:
         MakeTransparent(pScene, pIntersection, light, color);
         break;
+    case REFRACT:
+        Refraction(pScene, pIntersection, light, color);
+        break;
     default:
         Lambertian(pIntersection, light, color);
         break;
@@ -58,9 +61,9 @@ void Shader::addAmbientLight(Intersection* pIntersection, RGBR_f* color)
     //adds the color intensity multiplied by the 'strength' so they don't just turn whitish
     float ambientStrength = 25;
     //cap the color values to 255
-    color->r += std::min(color->r / 255 * ambientStrength, 255.0f);
-    color->g += std::min(color->g / 255 * ambientStrength, 255.0f);
-    color->b += std::min(color->b / 255 * ambientStrength, 255.0f);
+    color->r = std::min(color->r + color->r / 255 * ambientStrength, 255.0f);
+    color->g = std::min(color->g + color->g / 255 * ambientStrength, 255.0f);
+    color->b = std::min(color->b + color->b / 255 * ambientStrength, 255.0f);
     //----------------------------------------
 }
 
@@ -133,7 +136,10 @@ void Shader::ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* lig
     // TO DO: Proj2 raytracer
     // shadow effects - include results with multiple lights to soften shadows
     //--------------------------------------------------------------------
+
     Lambertian(pIntersection, light, color); // apply diffuse shading using lambertian
+    assert(pIntersection);
+    assert(light);
 
     //calculate light direction and normalize
     STVector3 lightV = light->GetPosition() - pIntersection->point;
@@ -141,14 +147,13 @@ void Shader::ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* lig
 
     // get the intersection point and offset towards light direction to prevent intersection with itself
     STVector3 point = pIntersection->point;
-    point += (0.1f * lightV);
+    point += (0.001f * lightV);
 
     // initialize a ray and temporary intersection. used to calculate intersection
     Ray ray;
     Intersection temp;
     ray.SetOrigin(point);
     ray.SetDirection(lightV);
-    ray.Direction().Normalize();
 
     // if there is an intersection dim the colors based on shadow/shading contribution
     // Reference: powerpoint - "Ray Tracing Part 1."
@@ -186,12 +191,12 @@ void Shader::MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* lig
     ray.SetDirection(r);
 
     // check for intersection and recurse if found
-    if (m_mode == MIRROR && pIntersection->surface->IsReflective()) {
+    if (pIntersection->surface->IsReflective()) {
         // divide the colors by the level as more reflection means more light/color loss
         color->r *= strength / level;
         color->g *= strength / level;
         color->b *= strength / level;
-        recurse = pScene->FindIntersection(ray, pIntersection);
+        recurse = pScene->FindIntersection(ray, pIntersection) > 0;
     }
     //---------------------------------------------------------------------
 }
@@ -234,6 +239,54 @@ void Shader::MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* 
         }
     }
     //-------------------------------------------------------------------------------
+}
+
+void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color)
+{
+    // TO DO: Proj2 raytracer
+    // Computes mirror reflections
+    //--------------------------------------------------------------------
+    Lambertian(pIntersection, light, color); // apply shading using lambertian
+    //Phong(pScene, pIntersection, light, color); // apply shading using phong
+
+    // calculate reflect vector using view direction and surface normal
+    // Reference: Fundamentals of Computer Graphics, chapter 4
+    // Referece: powerpoint - "Ray Tracing Part 1."
+
+    float cosi = std::max(-1.f, std::min(1.f, STVector3::Dot(pIntersection->normal, -pIntersection->viewDirection)));
+    float etai = 1;
+    float etat = REFRACT_INDEX_GLASS;
+    STVector3 n = pIntersection->normal;
+    if (cosi < 0) {
+        cosi = -cosi;
+    } else {
+        std::swap(etai, etat);
+        n = -pIntersection->normal;
+    }
+    float eta = etai / etat;
+    float k = 1 - eta * eta * (1 - cosi * cosi);
+    STVector3 refracted = (k < 0 ? STVector3::Zero : eta * -pIntersection->viewDirection + (eta * cosi - sqrtf(k)) * n);
+
+    STVector3 point = pIntersection->point;
+    point += (0.1f * refracted);
+
+    // initialize a ray from the intersection point toward the reflection to find an intersection
+    Ray ray;
+    ray.SetOrigin(point);
+    ray.SetDirection(refracted);
+    Intersection temp;
+
+    if (pIntersection->surface->IsReflective()) {
+        if (pScene->FindIntersection(ray, &temp) > 0 && temp.surface != pIntersection->surface) {
+            color->r = color->r * .05 + temp.surface->GetColor().r;
+            color->g = color->g * .05 + temp.surface->GetColor().g;
+            color->b = color->b * .05 + temp.surface->GetColor().b;
+        } else {
+            color->r = color->r * .05 + pScene->GetBackgroundColor().r;
+            color->g = color->g * .05 + pScene->GetBackgroundColor().g;
+            color->b = color->b * .05 + pScene->GetBackgroundColor().b;
+        }
+    }
 }
 
 Shader::~Shader()

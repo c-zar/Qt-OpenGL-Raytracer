@@ -41,6 +41,7 @@ private:
     void ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
     void MirrorEffect(Scene* pScene, Intersection* pIntersection, Light* light, int level, RGBR_f* color, bool& recurse);
     void MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
+    void Refraction(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color);
 };
 
 #endif //_RAY_H
