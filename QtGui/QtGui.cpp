@@ -27,10 +27,10 @@ QtGui::QtGui(QWidget* parent)
     //STVector3 c(0, -2, 100);
     //triangleList.push_back(Triangle(a, b, c, RGBR_f(255, 0, 0, 1), false));
 
-    STVector3 a2(10, -2, 20);
-    STVector3 b2(-10, -2, 0);
-    STVector3 c2(-10, 20, 0);
-    triangleList.push_back(Triangle(a2, b2, c2, RGBR_f(0, 255, 0, 1), true));
+    //STVector3 a2(10, -2, 20);
+    //STVector3 b2(-10, -2, 0);
+    //STVector3 c2(-10, 20, 0);
+    //triangleList.push_back(Triangle(a2, b2, c2, RGBR_f(0, 255, 0, 1), true));
 
     ui->openGLWidget->setReferences(sphereList, triangleList, cylinderList, lightList, sceneCam, width, height);
 }
@@ -191,19 +191,25 @@ void QtGui::openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c, QCo
 
 void QtGui::openCreateLightPage(STVector3& origin, QColor& color)
 {
+	bool submitted = false;
+
     //open page
     Create_Light* page = new Create_Light();
-    page->setReferences(origin, color);
+    page->setReferences(submitted, origin, color);
     page->exec();
 
-    //add triangle obj to vector
+	if (!submitted) {
+		return;
+	}
+
+    //add light obj to vector
     lightList.push_back(Light(origin, RGBR_f(color.red(), color.green(), color.blue(), color.alpha()), "Light"));
 
     //add triangle info to vector - REPLACE ONCE WE WRITE GETTER IN TRIANGLE
-    //QString triangleInfo = QString::fromStdString("TRIANGLE AT (" + std::to_string(a.x) + "," + std::to_string(a.y) + "," + std::to_string(a.z) + "),(" + std::to_string(b.x) + "," + std::to_string(b.y) + "," + std::to_string(b.z) + "),(" + std::to_string(c.x) + "," + std::to_string(c.y) + "," + std::to_string(c.z) + ")");
-    //triangleInfoList.push_back(triangleInfo);
+    QString lightInfo = QString::fromStdString("LIGHT AT " + std::to_string(origin.x) + " " + std::to_string(origin.x) + " " + std::to_string(origin.x) + " WITH COLOR: " + std::to_string(color.red()) + " " + std::to_string(color.green()) + " " + std::to_string(color.blue()));
+	lightInfoList.push_back(lightInfo);
 
-    //updateShapesList();
+    updateShapesList();
 }
 
 void QtGui::openCreateCylinderPage(STVector3& top, STVector3& bottom, float& radius, QColor& color)
@@ -237,6 +243,11 @@ void QtGui::updateShapesList()
     for (int i = 0; i < triangleInfoList.size(); i++) {
         ui->shapesList->addItem(triangleInfoList.at(i));
     }
+
+	//display light infos
+	for (int i = 0; i < lightInfoList.size(); i++) {
+		ui->shapesList->addItem(lightInfoList.at(i));
+	}
 }
 
 /* DELETES ITEM ON DOUBLE CLICK */
@@ -254,6 +265,12 @@ void QtGui::on_shapesList_itemDoubleClicked(QListWidgetItem* listWidgetItem) {
 		index = index - sphereList.size();
 		triangleList.erase(triangleList.begin() + index);
 		triangleInfoList.erase(triangleInfoList.begin() + index);
+	}
+
+	if (text.at(0) == 'L') {
+		index = index - triangleList.size() - sphereList.size();
+		lightList.erase(lightList.begin() + index);
+		lightInfoList.erase(lightInfoList.begin() + index);
 	}
 
 	ui->shapesList->removeItemWidget(listWidgetItem);
