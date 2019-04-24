@@ -241,6 +241,8 @@ void Shader::MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* 
     //-------------------------------------------------------------------------------
 }
 
+
+// referenced: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/reflection-refraction-fresnel
 void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color)
 {
     // TO DO: Proj2 raytracer
@@ -252,20 +254,20 @@ void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light
     // calculate reflect vector using view direction and surface normal
     // Reference: Fundamentals of Computer Graphics, chapter 4
     // Referece: powerpoint - "Ray Tracing Part 1."
-
-    float cosi = std::max(-1.f, std::min(1.f, STVector3::Dot(pIntersection->normal, -pIntersection->viewDirection)));
-    float etai = 1;
-    float etat = REFRACT_INDEX_GLASS;
+    STVector3 I = -pIntersection->viewDirection;
+    float cosTheta = STVector3::Dot(pIntersection->normal, I);
+    float sIndex = 1;
+    float eIndex = REFRACT_INDEX_GLASS;
     STVector3 n = pIntersection->normal;
-    if (cosi < 0) {
-        cosi = -cosi;
+    if (cosTheta < 0) {
+        cosTheta = -cosTheta;
     } else {
-        std::swap(etai, etat);
+        std::swap(sIndex, eIndex);
         n = -pIntersection->normal;
     }
-    float eta = etai / etat;
-    float k = 1 - eta * eta * (1 - cosi * cosi);
-    STVector3 refracted = (k < 0 ? STVector3::Zero : eta * -pIntersection->viewDirection + (eta * cosi - sqrtf(k)) * n);
+    float index = sIndex / eIndex;
+    float k = 1 - index * index * (1 - cosTheta * cosTheta);
+    STVector3 refracted = (k < 0 ? STVector3::Zero : index * I + (index * cosTheta - sqrtf(k)) * n);
 
     STVector3 point = pIntersection->point;
     point += (0.1f * refracted);
@@ -277,14 +279,14 @@ void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light
     Intersection temp;
 
     if (pIntersection->surface->IsReflective()) {
-        if (pScene->FindIntersection(ray, &temp) > 0 && temp.surface != pIntersection->surface) {
-            color->r = color->r * .05 + temp.surface->GetColor().r;
-            color->g = color->g * .05 + temp.surface->GetColor().g;
-            color->b = color->b * .05 + temp.surface->GetColor().b;
+        if (pScene->FindIntersection(ray, &temp) > 0) {
+            color->r = color->r * .1 + temp.surface->GetColor().r * .95;
+            color->g = color->g * .1 + temp.surface->GetColor().g * .95;
+            color->b = color->b * .1 + temp.surface->GetColor().b * .95;
         } else {
-            color->r = color->r * .05 + pScene->GetBackgroundColor().r;
-            color->g = color->g * .05 + pScene->GetBackgroundColor().g;
-            color->b = color->b * .05 + pScene->GetBackgroundColor().b;
+            color->r = color->r * .1 + pScene->GetBackgroundColor().r * .95;
+            color->g = color->g * .1 + pScene->GetBackgroundColor().g * .95;
+            color->b = color->b * .1 + pScene->GetBackgroundColor().b * .95;
         }
     }
 }

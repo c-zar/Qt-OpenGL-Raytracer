@@ -23,7 +23,8 @@ void Create_Light::on_btnOK_clicked()
     float z = ui.doubleSpinBoxZ->value();
 
     *originPtr = STVector3(x, y, z);
-    *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color");
+    *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color", QColorDialog::ShowAlphaChannel);
+    
 
     this->close();
 }
