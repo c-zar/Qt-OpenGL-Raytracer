@@ -17,7 +17,7 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color)
     m_b = b;
     m_c = c;
     m_color = color;
-    m_transparent = 0;
+    m_transparent = 1;
     reflective = false;
     initVertexArray();
 }
@@ -29,19 +29,19 @@ Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float tr
     m_b = b;
     m_c = c;
     m_color = color;
-    m_transparent = transparent;
+    m_transparent = std::min(1.f, transparent);
     reflective = false;
     initVertexArray();
 }
 
-Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective)
+Triangle::Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective, float transparent = 1)
     : Surface()
 {
     m_a = a;
     m_b = b;
     m_c = c;
     m_color = color;
-    m_transparent = 0;
+    m_transparent = std::min(1.f, transparent);
     this->reflective = reflective;
     initVertexArray();
 }

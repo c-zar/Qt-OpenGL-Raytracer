@@ -17,7 +17,7 @@ class Triangle : public Surface {
 public:
     Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color);
     Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, float transparent);
-    Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective);
+    Triangle(STVector3 a, STVector3 b, STVector3 c, RGBR_f color, bool reflective, float transparent);
 
     ~Triangle(void);
 

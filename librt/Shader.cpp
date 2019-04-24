@@ -52,6 +52,13 @@ void Shader::Run(Scene* pScene, Intersection* pIntersection, Light* light, int l
     }
 }
 
+void limitColor(RGBR_f* color, RGBR_f limit)
+{
+    color->r = std::min(limit.r, color->r);
+    color->g = std::min(limit.g, color->g);
+    color->b = std::min(limit.b, color->b);
+}
+
 // add AmbientLight to the pixel also making sure the r,g,b to resolve artifacts
 void Shader::addAmbientLight(Intersection* pIntersection, RGBR_f* color)
 {
@@ -90,6 +97,7 @@ void Shader::Lambertian(Intersection* pIntersection, Light* light, RGBR_f* color
     color->g = (lambert * lightIntensity * light->GetColor().g * color->g);
     color->b = (lambert * lightIntensity * light->GetColor().b * color->b);
     addAmbientLight(pIntersection, color); // add ambient light at the end
+    limitColor(color, pIntersection->surface->GetColor());
     //-------------------------------------------------------------
 }
 
@@ -163,6 +171,7 @@ void Shader::ShadowEffect(Scene* pScene, Intersection* pIntersection, Light* lig
         color->g *= shadowContribution;
         color->b *= shadowContribution;
     }
+    limitColor(color, pIntersection->surface->GetColor());
     //----------------------------------------------------------------
 }
 
@@ -226,21 +235,23 @@ void Shader::MakeTransparent(Scene* pScene, Intersection* pIntersection, Light* 
             RGBR_f tempColor = temp.surface->GetColor(); // make a temporary RGBR_f to get the color of the surface
             MakeTransparent(pScene, &temp, light, &tempColor); // apply lambertian to the temporary color to get the correct values
             // calculate the final color using the current surface color and the intersected surface color
-            color->r = color->r * (1.0f - trans) + tempColor.r * (trans);
-            color->g = color->b * (1.0f - trans) + tempColor.b * (trans);
-            color->b = color->g * (1.0f - trans) + tempColor.g * (trans);
+            if (color->g > 0.1f) {
+                int x = 0;
+            }
+            color->r = color->r * (trans) + tempColor.r * (1.0f - trans);
+            color->b = color->b * (trans) + tempColor.b * (1.0f - trans);
+            color->g = color->g * (trans) + tempColor.g * (1.0f - trans);
         } else {
             // if no intersection
             // calculate the final color using the current surface color and the background color
-            color->r = color->r * (1.0f - trans) + backgroundC.r * (trans);
-            color->g = color->b * (1.0f - trans) + backgroundC.b * (trans);
-            color->b = color->g * (1.0f - trans) + backgroundC.g * (trans);
+            color->r = color->r * (trans) + backgroundC.r * (1.0f - trans);
+            color->b = color->b * (trans) + backgroundC.b * (1.0f - trans);
+            color->g = color->g * (trans) + backgroundC.g * (1.0f - trans);
             return;
         }
     }
     //-------------------------------------------------------------------------------
 }
-
 
 // referenced: https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading/reflection-refraction-fresnel
 void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light, RGBR_f* color)
@@ -280,15 +291,19 @@ void Shader::Refraction(Scene* pScene, Intersection* pIntersection, Light* light
 
     if (pIntersection->surface->IsReflective()) {
         if (pScene->FindIntersection(ray, &temp) > 0) {
-            color->r = color->r * .1 + temp.surface->GetColor().r * .95;
-            color->g = color->g * .1 + temp.surface->GetColor().g * .95;
-            color->b = color->b * .1 + temp.surface->GetColor().b * .95;
+            RGBR_f color2 = temp.surface->GetColor();
+            Lambertian(&temp, light, &color2);
+
+            color->r = color->r * .1 + color2.r * .95;
+            color->g = color->g * .1 + color2.g * .95;
+            color->b = color->b * .1 + color2.b * .95;
         } else {
             color->r = color->r * .1 + pScene->GetBackgroundColor().r * .95;
             color->g = color->g * .1 + pScene->GetBackgroundColor().g * .95;
             color->b = color->b * .1 + pScene->GetBackgroundColor().b * .95;
         }
     }
+    limitColor(color, pIntersection->surface->GetColor());
 }
 
 Shader::~Shader()

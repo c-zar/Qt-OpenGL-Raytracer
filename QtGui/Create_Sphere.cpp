@@ -27,7 +27,7 @@ void Create_Sphere::on_btnOK_clicked()
 
     *centerPtr = STVector3(x, y, z);
     *radiusPtr = radius;
-    *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color");
+    *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color", QColorDialog::ShowAlphaChannel);
 
 	*submittedPtr = true;
 

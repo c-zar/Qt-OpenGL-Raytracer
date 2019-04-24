@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGridLayout>
@@ -39,6 +40,7 @@ public:
     QDoubleSpinBox *doubleSpinBoxV3Y;
     QDoubleSpinBox *doubleSpinBoxV3Z;
     QPushButton *btnOK;
+    QCheckBox *checkBoxRR;
 
     void setupUi(QDialog *Create_Triangle)
     {
@@ -195,7 +197,17 @@ public:
         sizePolicy1.setHeightForWidth(btnOK->sizePolicy().hasHeightForWidth());
         btnOK->setSizePolicy(sizePolicy1);
 
-        gridLayout->addWidget(btnOK, 4, 2, 1, 2);
+        gridLayout->addWidget(btnOK, 4, 3, 1, 1);
+
+        checkBoxRR = new QCheckBox(Create_Triangle);
+        checkBoxRR->setObjectName(QString::fromUtf8("checkBoxRR"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(checkBoxRR->sizePolicy().hasHeightForWidth());
+        checkBoxRR->setSizePolicy(sizePolicy2);
+
+        gridLayout->addWidget(checkBoxRR, 4, 1, 1, 2);
 
 
         retranslateUi(Create_Triangle);
@@ -213,6 +225,7 @@ public:
         label_5->setText(QApplication::translate("Create_Triangle", "V2", nullptr));
         label_6->setText(QApplication::translate("Create_Triangle", "V3", nullptr));
         btnOK->setText(QApplication::translate("Create_Triangle", "OK", nullptr));
+        checkBoxRR->setText(QApplication::translate("Create_Triangle", "Enable Reflections/Refraction", nullptr));
     } // retranslateUi
 
 };

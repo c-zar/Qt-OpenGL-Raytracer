@@ -63,7 +63,7 @@ private:
 
     //functions
     void openCreateSpherePage(STVector3& center, float& radius, QColor& color);
-    void openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c, QColor& color);
+    void openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c, QColor& color, bool & ref);
     void openCreateLightPage(STVector3& origin, QColor& color);
     void openCreateCylinderPage(STVector3& top, STVector3& bottom, float& radius, QColor& color);
     void updateShapesList();

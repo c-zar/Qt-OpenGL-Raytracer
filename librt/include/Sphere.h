@@ -17,7 +17,7 @@ class Sphere : public Surface {
 public:
     Sphere(float x, float y, float z, RGBR_f color, float radius);
     Sphere(float x, float y, float z, RGBR_f color, float radius, float transparent);
-    Sphere(float x, float y, float z, RGBR_f color, float radius, bool reflective);
+    Sphere(float x, float y, float z, RGBR_f color, float radius, bool reflective, float transparent);
     ~Sphere(void);
 
     bool onSphere(STVector3 point);
