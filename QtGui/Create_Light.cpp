@@ -10,8 +10,9 @@ Create_Light::~Create_Light()
 {
 }
 
-void Create_Light::setReferences(STVector3& origin, QColor& color)
+void Create_Light::setReferences(bool &submitted, STVector3& origin, QColor& color)
 {
+	submittedPtr = &submitted;
     originPtr = &origin;
     colorPtr = &color;
 }
@@ -25,6 +26,7 @@ void Create_Light::on_btnOK_clicked()
     *originPtr = STVector3(x, y, z);
     *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color", QColorDialog::ShowAlphaChannel);
     
+	*submittedPtr = true;
 
     this->close();
 }

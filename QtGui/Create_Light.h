@@ -11,7 +11,7 @@ class Create_Light : public QDialog {
 public:
     Create_Light(QWidget* parent = Q_NULLPTR);
     ~Create_Light();
-    void setReferences(STVector3& origin, QColor& color);
+    void setReferences(bool &submitted, STVector3& origin, QColor& color);
 
 private slots:
     void on_btnOK_clicked();
@@ -19,6 +19,7 @@ private slots:
 private:
     Ui::Create_Light ui;
 
+	bool *submittedPtr;
     QColor* colorPtr;
     STVector3* originPtr;
 };
