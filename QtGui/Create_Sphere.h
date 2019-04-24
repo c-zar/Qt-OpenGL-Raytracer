@@ -12,7 +12,7 @@ public:
     Create_Sphere(QWidget* parent = Q_NULLPTR);
     ~Create_Sphere();
 
-    void setReferences(STVector3& center, float& radius, QColor& color);
+    void setReferences(bool &submitted, STVector3& center, float& radius, QColor& color);
 
 private slots:
     void on_btnOK_clicked();
@@ -20,6 +20,7 @@ private slots:
 private:
     Ui::Create_Sphere ui;
 
+	bool *submittedPtr;
     QColor* colorPtr;
     STVector3* centerPtr;
     float* radiusPtr;

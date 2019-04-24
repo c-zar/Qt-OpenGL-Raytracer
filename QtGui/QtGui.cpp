@@ -20,17 +20,17 @@ QtGui::QtGui(QWidget* parent)
     pScene = new Scene();
     sceneCam = pScene->GetCamera();
 
-    sphereList.push_back(Sphere(0, .1, 20, RGBR_f(0, 0, 255, 1), 2, false));
+    //sphereList.push_back(Sphere(0, .1, 20, RGBR_f(0, 0, 255, 1), 2, false));
 
-    STVector3 a(50, -2, 0);
-    STVector3 b(-50, -2, 0);
-    STVector3 c(0, -2, 100);
-    triangleList.push_back(Triangle(a, b, c, RGBR_f(255, 0, 0, 1), false));
+    //STVector3 a(50, -2, 0);
+    //STVector3 b(-50, -2, 0);
+    //STVector3 c(0, -2, 100);
+    //triangleList.push_back(Triangle(a, b, c, RGBR_f(255, 0, 0, 1), false));
 
-    STVector3 a2(10, -2, 20);
-    STVector3 b2(-10, -2, 0);
-    STVector3 c2(-10, 20, 0);
-    triangleList.push_back(Triangle(a2, c2, b2, RGBR_f(0, 255, 0, 1), true));
+    //STVector3 a2(10, -2, 20);
+    //STVector3 b2(-10, -2, 0);
+    //STVector3 c2(-10, 20, 0);
+    //triangleList.push_back(Triangle(a2, c2, b2, RGBR_f(0, 255, 0, 1), true));
 
     ui->openGLWidget->setReferences(sphereList, triangleList, cylinderList, lightList, sceneCam, width, height);
 }
@@ -145,10 +145,16 @@ void QtGui::on_camUpZ_valueChanged(double newVal)
 
 void QtGui::openCreateSpherePage(STVector3& center, float& radius, QColor& color)
 {
+	bool submitted = false;
+
     //open page
     Create_Sphere* page = new Create_Sphere();
-    page->setReferences(center, radius, color);
+    page->setReferences(submitted, center, radius, color);
     page->exec();
+
+	if (!submitted) {
+		return;
+	}
 
     //add sphere obj to vector
     sphereList.push_back(Sphere(center.x, center.y, center.z, RGBR_f(color.red(), color.green(), color.blue(), 1), radius));
@@ -162,10 +168,16 @@ void QtGui::openCreateSpherePage(STVector3& center, float& radius, QColor& color
 
 void QtGui::openCreateTrianglePage(STVector3& a, STVector3& b, STVector3& c, QColor& color)
 {
+	bool submitted = false;
+
     //open page
     Create_Triangle* page = new Create_Triangle();
-    page->setReferences(a, b, c, color);
+    page->setReferences(submitted, a, b, c, color);
     page->exec();
+
+	if (!submitted) {
+		return;
+	}
 
     //add triangle obj to vector
     triangleList.push_back(Triangle(a, b, c, RGBR_f(color.red(), color.green(), color.blue(), 1)));
@@ -225,6 +237,27 @@ void QtGui::updateShapesList()
     for (int i = 0; i < triangleInfoList.size(); i++) {
         ui->shapesList->addItem(triangleInfoList.at(i));
     }
+}
+
+/* DELETES ITEM ON DOUBLE CLICK */
+void QtGui::on_shapesList_itemDoubleClicked(QListWidgetItem* listWidgetItem) {
+	int index = ui->shapesList->currentIndex().row();
+
+	QString text = listWidgetItem->text();
+
+	if (text.at(0) == 'S') {
+		sphereList.erase(sphereList.begin() + index);
+		sphereInfoList.erase(sphereInfoList.begin() + index);
+	} 
+
+	if (text.at(0) == 'T') {
+		index = index - sphereList.size();
+		triangleList.erase(triangleList.begin() + index);
+		triangleInfoList.erase(triangleInfoList.begin() + index);
+	}
+
+	ui->shapesList->removeItemWidget(listWidgetItem);
+	updateShapesList();
 }
 
 void QtGui::renderRayTracing()
@@ -308,8 +341,6 @@ void QtGui::renderRayTracing()
     }
 
     //run ray tracing
-    QString test = QString::number(int_mode) + " " + QString::number(int_proj);
-    ui->btnAddShape->setText(test);
     pRayTracer->Run(pScene, "test.png", mode, m_projectionType, width, height);
 
     //open image after

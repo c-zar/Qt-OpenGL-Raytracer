@@ -10,8 +10,9 @@ Create_Sphere::~Create_Sphere()
 {
 }
 
-void Create_Sphere::setReferences(STVector3& center, float& radius, QColor& color)
+void Create_Sphere::setReferences(bool &submitted, STVector3& center, float& radius, QColor& color)
 {
+	submittedPtr = &submitted;
     centerPtr = &center;
     radiusPtr = &radius;
     colorPtr = &color;
@@ -28,6 +29,7 @@ void Create_Sphere::on_btnOK_clicked()
     *radiusPtr = radius;
     *colorPtr = QColorDialog::getColor(Qt::white, this, "Choose Color");
 
+	*submittedPtr = true;
 
     this->close();
 }

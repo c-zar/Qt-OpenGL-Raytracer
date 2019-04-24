@@ -26,6 +26,8 @@ private slots:
     void on_btnAddShape_clicked();
     void on_btnRender_clicked();
 
+	void on_shapesList_itemDoubleClicked(QListWidgetItem* listWidgetItem);
+
     void on_camPosX_valueChanged(double newVal);
     void on_camPosY_valueChanged(double newVal);
     void on_camPosZ_valueChanged(double newVal);
