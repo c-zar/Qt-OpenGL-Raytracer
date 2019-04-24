@@ -2,10 +2,10 @@
 #include "Light.h"
 #include "RayTracer.h"
 #include "Scene.h"
+#include "Show_Image.h"
 #include "Sphere.h"
 #include "Triangle.h"
 #include "defs.h"
-#include "Show_Image.h"
 #include <map>
 #include <stdio.h>
 #include <string.h>
@@ -30,7 +30,7 @@ QtGui::QtGui(QWidget* parent)
     STVector3 a2(10, -2, 20);
     STVector3 b2(-10, -2, 0);
     STVector3 c2(-10, 20, 0);
-    triangleList.push_back(Triangle(a2, c2, b2, RGBR_f(0, 255, 0, 1), true));
+    triangleList.push_back(Triangle(a2, b2, c2, RGBR_f(0, 255, 0, 1), true));
 
     ui->openGLWidget->setReferences(sphereList, triangleList, cylinderList, lightList, sceneCam, width, height);
 }
@@ -185,7 +185,7 @@ void QtGui::openCreateLightPage(STVector3& origin, QColor& color)
     page->exec();
 
     //add triangle obj to vector
-    //triangleList.push_back(Triangle(a, b, c, RGBR_f(255.0, 0, 0, 1)));
+    lightList.push_back(Light(origin, RGBR_f(color.red(), color.green(), color.blue(), color.alpha()), "Light"));
 
     //add triangle info to vector - REPLACE ONCE WE WRITE GETTER IN TRIANGLE
     //QString triangleInfo = QString::fromStdString("TRIANGLE AT (" + std::to_string(a.x) + "," + std::to_string(a.y) + "," + std::to_string(a.z) + "),(" + std::to_string(b.x) + "," + std::to_string(b.y) + "," + std::to_string(b.z) + "),(" + std::to_string(c.x) + "," + std::to_string(c.y) + "," + std::to_string(c.z) + ")");
@@ -234,10 +234,7 @@ void QtGui::renderRayTracing()
 
     //Lights -------------------------------------------------------------------------------------------------------
     Light scenelight = Light(STVector3(0, 50, 10), RGBR_f(255, 255, 255, 20), "Light1");
-    Light scenelight2 = Light(STVector3(0, 0, 0), RGBR_f(255, 255, 255, 1), "Light2");
-    
     pScene->AddLight(scenelight);
-    pScene->AddLight(scenelight2);
     //Lights -------------------------------------------------------------------------------------------------------
 
     //Surfaces -------------------------------------------------------------------------------------------------------
@@ -246,6 +243,10 @@ void QtGui::renderRayTracing()
     //pScene->AddSurface(new Sphere(-50, -150, 150, RGBR_f(255.0f, 0.0f, 0.0f, 1.0f), 50));
     //pScene->AddSurface(new Sphere(50, -175, 100, RGBR_f(0, 0, 255, 1), 25, 0.5f));
     //pScene->AddSurface(new Sphere(50, -125, 200, RGBR_f(0.0f, 255.0f, 0.0f, 1.0f), 75));
+
+    for (int i = 0; i < lightList.size(); i++) {
+        pScene->AddLight(lightList.at(i));
+    }
 
     for (int i = 0; i < sphereList.size(); i++) {
         pScene->AddSurface(&sphereList.at(i));
@@ -275,7 +276,7 @@ void QtGui::renderRayTracing()
     RenderMode mode;
     switch (int_mode) {
     case 0:
-        mode = REFRACT;
+        mode = LAMBERTIAN;
         break;
     case 1:
         mode = PHONG;
@@ -288,6 +289,9 @@ void QtGui::renderRayTracing()
         break;
     case 4:
         mode = MIRROR;
+        break;
+    case 5:
+        mode = REFRACT;
         break;
     default:
         mode = LAMBERTIAN;

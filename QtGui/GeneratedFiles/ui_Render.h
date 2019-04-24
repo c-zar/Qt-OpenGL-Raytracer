@@ -59,6 +59,7 @@ public:
         comboBoxRenderMode->addItem(QString());
         comboBoxRenderMode->addItem(QString());
         comboBoxRenderMode->addItem(QString());
+        comboBoxRenderMode->addItem(QString());
         comboBoxRenderMode->setObjectName(QString::fromUtf8("comboBoxRenderMode"));
 
         gridLayout->addWidget(comboBoxRenderMode, 1, 0, 1, 1);
@@ -124,6 +125,7 @@ public:
         comboBoxRenderMode->setItemText(2, QApplication::translate("Render", "Shadows", nullptr));
         comboBoxRenderMode->setItemText(3, QApplication::translate("Render", "Transparency", nullptr));
         comboBoxRenderMode->setItemText(4, QApplication::translate("Render", "Mirror", nullptr));
+        comboBoxRenderMode->setItemText(5, QApplication::translate("Render", "Refraction", nullptr));
 
         label_3->setText(QApplication::translate("Render", "Width", nullptr));
         label_2->setText(QApplication::translate("Render", "Height", nullptr));
